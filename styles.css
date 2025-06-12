@@ -513,6 +513,41 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Стилі для сітки соціальних посилань */
+.social-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 250px мінімальна ширина колонки */
+    gap: 15px; /* Відступ між елементами сітки */
+    margin-top: 20px;
+    justify-items: center; /* Центруємо елементи по горизонталі */
+    align-items: start; /* Вирівнюємо елементи по верхньому краю */
+}
+
+.social-links-grid p {
+    text-align: left; /* Вирівнюємо текст по лівому краю всередині кожного елемента */
+    margin: 0; /* Прибираємо стандартний відступ від параграфів */
+    padding: 10px;
+    background-color: #2a2a2a; /* Темніший фон для кожного посилання */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 100%; /* Займає всю ширину колонки */
+    box-sizing: border-box; /* Включаємо padding в ширину */
+}
+
+.social-links-grid p a {
+    display: inline; /* Щоб посилання займало лише необхідний простір */
+    font-weight: normal; /* Звичайний жирність */
+    color: #00bfff; /* Блакитний колір для посилань */
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.social-links-grid p a:hover {
+    color: #00a0e6; /* Темніший блакитний при наведенні */
+    text-decoration: underline;
+}
+
+
 /* Медіазапити для адаптивності */
 @media (max-width: 992px) {
     header .logo h1 {
@@ -581,6 +616,10 @@ footer a:hover {
 
     .privacy-content p, .contact-info p {
         font-size: 1.05em;
+    }
+
+    .social-links-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Менша мінімальна ширина для мобільних */
     }
 }
 
@@ -658,11 +697,9 @@ footer a:hover {
         max-height: 280px;
     }
 
-    /* Змінено позиціонування кнопок на мобільних */
     .control-button {
         padding: 6px 10px; /* Ще менший розмір */
         font-size: 1.2em;
-        /* Розташуємо кнопки всередині зображення, накладання на зображення є очікуваним */
         left: 5px; /* Відступ від лівого краю зображення */
         right: 5px; /* Відступ від правого краю зображення */
         top: 50%; /* Центруємо по вертикалі */
@@ -706,5 +743,9 @@ footer a:hover {
 
     .carousel img, .gallery .image-container img {
         max-height: 200px;
+    }
+
+    .social-links-grid {
+        grid-template-columns: 1fr; /* Одна колонка на найменших екранах */
     }
 }

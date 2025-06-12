@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'contacts-title': 'Контакти',
             'contacts-email': 'Електронна пошта',
             'instagram-title': 'Instagram',
+            'instagram-group': 'Група', // Додано для Instagram групи
             'instagram-david': 'Давид',
             'instagram-oleksandr': 'Олександр',
             'instagram-orest': 'Орест',
@@ -62,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'contacts-title': 'Contacts',
             'contacts-email': 'Email',
             'instagram-title': 'Instagram',
+            'instagram-group': 'Group', // Додано для Instagram групи
             'instagram-david': 'David',
             'instagram-oleksandr': 'Oleksandr',
             'instagram-orest': 'Orest',
@@ -129,14 +131,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const bandImageElement = document.getElementById("band-image");
         const bandInfoTextElement = document.getElementById("band-info-text");
         if (bandImageElement && bandInfoTextElement) {
-            // Знаходимо ID поточного учасника гурту на основі відображеного зображення
-            // Використовуємо .src.split('/').pop() для отримання лише імені файлу, що робить порівняння більш надійним
             const currentBandMember = bandImages.find(member => bandImageElement.src.includes(member.src.split('/').pop()));
             if (currentBandMember) {
                 bandInfoTextElement.textContent = translations[lang][`band-info-${currentBandMember.id}`];
             } else {
-                // Якщо зображення не знайдено в bandImages, але елемент існує,
-                // то можемо встановити текст за замовчуванням або залишити як є.
                 console.warn("Could not find current band member for translation. Image src:", bandImageElement.src);
             }
         }

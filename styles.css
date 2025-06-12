@@ -1,0 +1,677 @@
+/* Загальний скидання стилів */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Імпорт шрифтів Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Lato:wght@400;700&display=swap');
+
+/* Основний стиль тіла */
+body {
+    font-family: 'Lato', sans-serif; /* Новий шрифт для основного тексту */
+    background-color: #1a1a1a; /* Дуже темний фон */
+    color: #f5f5f5; /* Світлий текст */
+}
+
+/* Шапка сайту */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px; /* Збільшений відступ */
+    background-color: #2a2a2a; /* Темніший сірий для шапки */
+    border-bottom: 2px solid #e60000; /* Червона лінія знизу */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Виразна тінь */
+    flex-wrap: wrap; /* Дозволяє елементам переноситися на наступний рядок */
+}
+
+header .logo h1 {
+    font-family: 'Exo 2', sans-serif; /* Агресивний шрифт для логотипу */
+    color: #e60000; /* Червоний колір */
+    font-size: 2.8em; /* Збільшений розмір */
+    font-weight: 800; /* Дуже жирний */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Тінь для тексту */
+    letter-spacing: 2px; /* Розрядка для "JORS" */
+}
+
+/* Контейнер для навігації та кнопки мови */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Більший простір між навігацією та кнопкою мови */
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px; /* Збільшений простір між пунктами навігації */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    font-family: 'Exo 2', sans-serif; /* Агресивний шрифт для навігації */
+    color: #cccccc; /* Світліший сірий */
+    text-decoration: none;
+    font-size: 1.3em; /* Збільшений розмір */
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: color 0.3s, text-shadow 0.3s, transform 0.2s; /* Додаємо transform для анімації */
+    padding: 8px 15px; /* Збільшуємо область натискання */
+    border-radius: 5px; /* Злегка заокруглені кути */
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #e60000; /* Червоний при наведенні/активний */
+    text-shadow: 0 0 10px #e60000; /* Ефект світіння */
+    transform: translateY(-3px); /* Невеликий підйом */
+}
+
+/* Кнопка перемикання мови */
+.lang-toggle-btn {
+    font-family: 'Exo 2', sans-serif;
+    background-color: #e60000; /* Червоний фон */
+    color: #fff;
+    border: none;
+    padding: 10px 15px; /* Збільшений розмір кнопки */
+    font-size: 1.1em;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 0 8px rgba(230, 0, 0, 0.5); /* Червоне світіння */
+    z-index: 100;
+}
+
+.lang-toggle-btn:hover {
+    background-color: #cc0000; /* Темніший червоний при наведенні */
+    transform: translateY(-3px); /* Невеликий підйом */
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.8); /* Сильніше світіння */
+}
+
+/* Розділ Hero для Головної сторінки */
+body.home .hero {
+    text-align: center;
+    padding: 80px 20px; /* Більший відступ */
+    background-image: url('images/20250410_191959%20(2).jpg'); /* Фон тільки для Головної сторінки */
+    background-size: cover;
+    background-position: center;
+    color: #f5f5f5;
+    position: relative;
+    z-index: 1;
+    min-height: 500px; /* Мінімальна висота для більшого впливу */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); /* Темніша тінь для тексту */
+}
+
+body.home .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Напівпрозорий темний шар для кращої читабельності тексту */
+    z-index: -1;
+}
+
+body.home .band-image {
+    position: relative;
+    animation: moveUpDown 5s ease-in-out infinite;
+    margin: 0 auto 30px; /* Відступ знизу */
+    width: 90%;
+    max-width: 600px; /* Збільшена максимальна ширина */
+    border: 3px solid #e60000; /* Червона рамка */
+    box-shadow: 0 0 20px rgba(230, 0, 0, 0.7); /* Сильніше червоне світіння */
+    border-radius: 10px; /* Заокруглення кутів */
+    overflow: hidden; /* Обрізаємо вміст, що виходить за рамки */
+}
+
+body.home .band-image img {
+    width: 100%;
+    height: auto;
+    display: block; /* Уникаємо зайвих пробілів */
+    transition: transform 0.5s ease;
+}
+
+body.home .band-image:hover img {
+    transform: scale(1.05); /* Збільшення при наведенні */
+}
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px); /* Невеликий підйом */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+body.home .hero h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 3.5em; /* Більший розмір шрифту */
+    color: #e60000;
+    margin-bottom: 15px;
+    letter-spacing: 2px; /* Розрядка */
+}
+
+body.home .hero p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.3em;
+    color: #cccccc;
+}
+
+/* Секції основного контенту */
+main section {
+    padding: 50px 30px; /* Більший відступ */
+    margin: 40px auto; /* Збільшений зовнішній відступ */
+    max-width: 1100px; /* Змінена максимальна ширина */
+    background-color: #222222; /* Темніший сірий фон */
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7); /* Більш виразна тінь */
+    border: 1px solid #333333; /* Тонка рамка */
+}
+
+main section h2 {
+    font-family: 'Exo 2', sans-serif;
+    text-align: center;
+    color: #e60000;
+    margin-bottom: 30px; /* Більший відступ */
+    font-size: 3em; /* Більший розмір */
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+main section p {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: 1.15em;
+    line-height: 1.7;
+    color: #e0e0e0; /* Трохи світліший колір тексту */
+}
+
+/* Карусель учасників */
+.band-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Вирівнюємо елементи по верху */
+    gap: 40px; /* Збільшений відступ */
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.carousel {
+    position: relative;
+    flex: 2; /* Займає більшу частину ширини */
+    max-width: 650px; /* Збільшена максимальна ширина */
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+    max-height: 450px; /* Збільшена максимальна висота */
+    border-radius: 10px; /* Злегка заокруглені кути */
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.6); /* Червоне світіння */
+    border: 2px solid #e60000; /* Червона рамка */
+}
+
+.band-info {
+    flex: 1; /* Займає меншу частину ширини */
+    padding: 30px; /* Більший відступ */
+    background-color: #3a3a3a; /* Темніший фон */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #444; /* Тонка рамка */
+}
+
+.band-info p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25em; /* Більший розмір шрифту */
+    color: #f5f5f5;
+    margin: 0;
+    text-align: left; /* Вирівнюємо по лівому краю */
+    line-height: 1.8;
+}
+
+/* Кнопки управління каруселями та галереєю (оновлений мінімалістичний дизайн) */
+.control-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent; /* Мінімалістичний: прозорий фон */
+    color: #e60000; /* Червоний колір стрілок */
+    border: 2px solid #e60000; /* Товста червона рамка */
+    padding: 10px 15px; /* Зменшений розмір для мінімалізму */
+    font-size: 1.5em; /* Розмір стрілок */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8; /* Трохи прозорі */
+}
+
+.control-button:hover {
+    background-color: rgba(230, 0, 0, 0.2); /* Легкий червоний фон при наведенні */
+    color: #fff; /* Білі стрілки при наведенні */
+    border-color: #ff3333; /* Яскравіша рамка при наведенні */
+    transform: translateY(-50%) scale(1.1); /* Невелике збільшення */
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.8); /* Світіння */
+    opacity: 1; /* Повна непрозорість */
+}
+
+/* Специфічне позиціонування для кнопок "Попередній" */
+.carousel .prev-button, .gallery .prev-button {
+    left: -25px; /* Винос за межі контейнера зображення */
+}
+
+/* Специфічне позиціонування для кнопок "Наступний" */
+.carousel .next-button, .gallery .next-button {
+    right: -25px; /* Винос за межі контейнера зображення */
+}
+
+
+/* Галерея зображень */
+.gallery .image-container {
+    position: relative;
+    width: 90%;
+    max-width: 900px; /* Більша максимальна ширина */
+    margin: 30px auto;
+    border: 3px solid #e60000; /* Червона рамка */
+    box-shadow: 0 0 20px rgba(230, 0, 0, 0.7); /* Червоне світіння */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.gallery .image-container img {
+    width: 100%;
+    height: auto;
+    max-height: 600px; /* Збільшена максимальна висота */
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery .image-container img:hover {
+    transform: scale(1.05); /* Збільшення при наведенні */
+}
+
+
+/* Музичний плеєр */
+.music-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Збільшений відступ */
+    padding: 30px;
+}
+
+.music-player-container {
+    width: 90%;
+    max-width: 800px; /* Збільшена максимальна ширина */
+    background-color: #333333; /* Темніший фон */
+    border-radius: 10px;
+    padding: 25px; /* Збільшений відступ */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid #444;
+}
+
+#audio-player {
+    width: 100%;
+    background-color: #444;
+    border-radius: 5px;
+    outline: none; /* Видаляємо обведення фокусу */
+}
+
+.music-list ul {
+    list-style: none;
+    padding: 0;
+    width: 90%;
+    max-width: 800px;
+}
+
+.music-list li {
+    margin-bottom: 15px; /* Більший відступ */
+}
+
+.track-button {
+    font-family: 'Exo 2', sans-serif;
+    background-color: #e60000;
+    color: #fff;
+    border: none;
+    padding: 15px 25px; /* Збільшений розмір */
+    font-size: 1.2em;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    position: relative; /* Для псевдоелементів */
+    overflow: hidden; /* Щоб світіння не виходило за межі */
+}
+
+.track-button:hover {
+    background-color: #cc0000;
+    transform: translateY(-5px); /* Сильніший підйом */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), 0 0 20px #e60000; /* Сильніша тінь і світіння */
+}
+
+.track-button.active {
+    background-color: #990000;
+    border: 3px solid #fff; /* Товстіша рамка */
+    box-shadow: 0 0 25px #ff6666; /* Сильніше світіння для активного */
+}
+
+/* Політика конфіденційності та Контакти */
+.privacy-content, .contact-info {
+    padding: 30px;
+    text-align: left;
+}
+
+/* Стилі для <abbr> у розділі приватності */
+.privacy-content abbr {
+    position: relative;
+    text-decoration: none; /* Видаляємо стандартне підкреслення */
+    border-bottom: 1px dotted #e60000; /* Додаємо пунктирне підкреслення */
+    cursor: help; /* Змінюємо курсор на знак питання */
+    color: #e60000; /* Виділяємо слово кольором */
+}
+
+.privacy-content abbr::after {
+    content: attr(title); /* Використовуємо текст з атрибута title */
+    position: absolute;
+    left: 50%;
+    bottom: 120%; /* Розміщуємо вище слова */
+    transform: translateX(-50%);
+    background-color: #e60000; /* Колір фону підказки */
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    white-space: nowrap; /* Запобігаємо перенесенню тексту */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, bottom 0.3s ease;
+    z-index: 99;
+    font-size: 0.9em; /* Трохи менший шрифт для підказки */
+    text-shadow: none; /* Видаляємо тінь, якщо є */
+    border: 1px solid #ff3333;
+    box-shadow: 0 0 10px rgba(230, 0, 0, 0.7);
+}
+
+.privacy-content abbr:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: 100%; /* Злегка піднімаємо при наведенні */
+}
+
+.privacy-content h3, .contact-info h2 {
+    font-family: 'Exo 2', sans-serif;
+    color: #e60000;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+.privacy-content p, .contact-info p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.15em;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
+
+.privacy-content a, .contact-info a {
+    color: #e60000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.privacy-content a:hover {
+    color: #ff3333;
+    text-decoration: underline;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #2a2a2a;
+    color: #cccccc;
+    margin-top: 60px; /* Більший відступ */
+    border-top: 2px solid #e60000; /* Червона лінія зверху */
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5); /* Тінь */
+}
+
+footer p {
+    font-size: 0.95em;
+    font-family: 'Lato', sans-serif;
+}
+
+footer a {
+    color: #e60000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+footer a:hover {
+    color: #ff3333;
+    text-decoration: underline;
+}
+
+/* Медіазапити для адаптивності */
+@media (max-width: 992px) {
+    header .logo h1 {
+        font-size: 2.2em;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav ul li a {
+        font-size: 1.1em;
+        padding: 5px 10px;
+    }
+
+    .lang-toggle-btn {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+
+    body.home .hero h2 {
+        font-size: 2.8em;
+    }
+
+    body.home .hero p {
+        font-size: 1.1em;
+    }
+
+    main section h2 {
+        font-size: 2.5em;
+    }
+
+    .band-carousel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carousel, .band-info {
+        max-width: 90%; /* Займає майже всю ширину */
+    }
+
+    .carousel img, .gallery .image-container img {
+        max-height: 350px;
+    }
+
+    /* Змінено позиціонування кнопок на середніх екранах */
+    .control-button {
+        padding: 8px 12px; /* Зменшуємо розмір */
+        font-size: 1.3em;
+        left: 5px; /* Зсуваємо ближче до країв */
+        right: 5px;
+    }
+
+    .music-player-container, .music-list ul {
+        max-width: 90%;
+    }
+
+    .track-button {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+
+    .privacy-content h3, .contact-info h2 {
+        font-size: 2em; /* Зменшення для середніх екранів */
+    }
+
+    .privacy-content p, .contact-info p {
+        font-size: 1.05em;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 20px;
+    }
+
+    .header-right {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    .lang-toggle-btn {
+        position: static;
+        margin-left: 0;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+        display: block;
+        padding: 8px;
+    }
+
+    body.home .hero {
+        padding: 60px 15px;
+    }
+
+    body.home .hero h2 {
+        font-size: 2.5em;
+    }
+
+    body.home .hero p {
+        font-size: 1em;
+    }
+
+    main section {
+        padding: 30px 15px;
+        margin: 30px auto;
+    }
+
+    main section h2 {
+        font-size: 2em;
+    }
+
+    main section p {
+        font-size: 1em;
+    }
+
+    .band-carousel {
+        gap: 25px;
+    }
+
+    .carousel img, .gallery .image-container img {
+        max-height: 280px;
+    }
+
+    .carousel .prev-button,
+    .carousel .next-button,
+    .gallery .prev-button,
+    .gallery .next-button {
+        padding: 10px 15px;
+        font-size: 1.3em;
+        left: 0px; /* Врівень з краєм зображення */
+        right: 0px;
+    }
+
+    .music-player-container, .music-list ul {
+        max-width: 95%;
+    }
+
+    .track-button {
+        font-size: 0.95em;
+        padding: 10px 15px;
+    }
+
+    .privacy-content h3, .contact-info h2 {
+        font-size: 1.8em;
+    }
+
+    .privacy-content p, .contact-info p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo h1 {
+        font-size: 1.8em;
+    }
+
+    body.home .hero h2 {
+        font-size: 2em;
+    }
+
+    body.home .hero p {
+        font-size: 0.9em;
+    }
+
+    main section h2 {
+        font-size: 1.8em;
+    }
+
+    .carousel img, .gallery .image-container img {
+        max-height: 200px;
+    }
+}

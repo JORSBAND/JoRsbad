@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JORS Метал Гурт</title>
+    <link rel="icon" href="images/band_image_1.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body class="home">
+    <header>
+        <div class="logo">
+            <h1>JORS</h1> <!-- Змінено з "JORS Метал Гурт" -->
+        </div>
+        <!-- Новий контейнер для навігації та кнопки мови -->
+        <div class="header-right">
+            <nav>
+                <ul class="navigation-menu">
+                    <li><a href="index.html" class="active" data-key="home">Головна</a></li>
+                    <li><a href="members.html" data-key="members">Учасники</a></li>
+                    <li><a href="gallery.html" data-key="gallery">Галерея</a></li>
+                    <li><a href="music.html" data-key="music">Музика</a></li>
+                    <li><a href="contacts.html" data-key="contacts">Контакти</a></li>
+                </ul>
+            </nav>
+            <!-- Кнопка перемикання мови -->
+            <button id="lang-toggle-btn" class="lang-toggle-btn">UK</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="band-image">
+                <img src="images/band_image_1.png" alt="Band Image">
+            </div>
+            <h2 data-key="hero-title-home">Вас вітає JORS Метал Гурт!</h2>
+            <p data-key="hero-subtitle-home">Пориньте у світ музики разом із нами.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p data-key="footer-text">&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a></p>
+    </footer>
+</body>
+</html>

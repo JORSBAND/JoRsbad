@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учасники</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>JORS</h1> <!-- Змінено з "JORS Метал Гурт" -->
+        </div>
+        <!-- Новий контейнер для навігації та кнопки мови -->
+        <div class="header-right">
+            <nav>
+                <ul class="navigation-menu">
+                    <li><a href="index.html" data-key="home">Головна</a></li>
+                    <li><a href="members.html" class="active" data-key="members">Учасники</a></li>
+                    <li><a href="gallery.html" data-key="gallery">Галерея</a></li>
+                    <li><a href="music.html" data-key="music">Музика</a></li>
+                    <li><a href="contacts.html" data-key="contacts">Контакти</a></li>
+                </ul>
+            </nav>
+            <!-- Кнопка перемикання мови -->
+            <button id="lang-toggle-btn" class="lang-toggle-btn">UK</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2 data-key="members-title">Учасники гурту</h2>
+            <p data-key="members-subtitle">Познайомтесь з нашими талановитими учасниками!</p>
+        </section>
+
+        <section class="band-carousel">
+            <div class="carousel">
+                <!-- Зображення гурту буде оновлено за допомогою JavaScript -->
+                <img id="band-image" src="images/bandor.jpg" alt="Учасник гурту">
+                <button class="prev-button control-button">&lt;</button> <!-- Додано control-button -->
+                <button class="next-button control-button">&gt;</button> <!-- Додано control-button -->
+            </div>
+            <div class="band-info">
+                <!-- Інформація про учасника буде оновлена за допомогою JavaScript -->
+                <p id="band-info-text">Олександр — ритм-гітарист, співзасновник гурту. Його рифи створюють міцний фундамент для нашого звучання.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-key="footer-text">&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a></p>
+    </footer>
+</body>
+</html>

@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
             'music-subtitle': 'Слухайте наші треки тут!',
             'contacts-title': 'Контакти',
             'contacts-email': 'Електронна пошта',
+            'instagram-title': 'Instagram',
+            'instagram-david': 'Давид',
+            'instagram-oleksandr': 'Олександр',
+            'instagram-orest': 'Орест',
+            'instagram-yaroslav': 'Ярослав',
             'privacy-title': 'Політика конфіденційності',
             'privacy-subtitle': 'Ми піклуємося про вашу приватність та збереження ваших даних.',
             'privacy-heading1': 'Збір і використання даних',
@@ -56,6 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
             'music-subtitle': 'Listen to our tracks here!',
             'contacts-title': 'Contacts',
             'contacts-email': 'Email',
+            'instagram-title': 'Instagram',
+            'instagram-david': 'David',
+            'instagram-oleksandr': 'Oleksandr',
+            'instagram-orest': 'Orest',
+            'instagram-yaroslav': 'Yaroslav',
             'privacy-title': 'Privacy Policy',
             'privacy-subtitle': 'We care about your privacy and data security.',
             'privacy-heading1': 'Data Collection and Use',
@@ -235,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentIndex = (currentIndex + 1) % bandImages.length;
                 updateCarousel();
             });
-        }
+        });
 
         updateCarousel(); // Initial call to set the first member's info
     }

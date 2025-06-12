@@ -34,7 +34,39 @@ header .logo h1 {
     font-weight: 800; /* Дуже жирний */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Тінь для тексту */
     letter-spacing: 2px; /* Розрядка для "JORS" */
+    position: relative; /* Додано для позиціонування псевдоелемента */
+    cursor: help; /* Змінюємо курсор, щоб вказати на інтерактивність */
 }
+
+/* Стилі для псевдоелемента при наведенні на JORS */
+header .logo h1::after {
+    content: "Давид ЛОХ"; /* Текст, який з'явиться при наведенні */
+    position: absolute;
+    top: 100%; /* Розміщуємо під текстом JORS */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e60000; /* Червоний фон */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Запобігаємо перенесенню тексту */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, top 0.3s ease;
+    z-index: 101; /* Перекриває інші елементи */
+    font-size: 0.5em; /* Трохи менший шрифт */
+    font-weight: 700;
+    text-shadow: none; /* Видаляємо тінь, щоб текст був чіткішим */
+    border: 1px solid #ff3333;
+    box-shadow: 0 0 10px rgba(230, 0, 0, 0.7);
+}
+
+header .logo h1:hover::after {
+    opacity: 1;
+    visibility: visible;
+    top: calc(100% + 10px); /* Злегка відступаємо від тексту JORS */
+}
+
 
 /* Контейнер для навігації та кнопки мови */
 .header-right {
@@ -626,14 +658,15 @@ footer a:hover {
         max-height: 280px;
     }
 
-    .carousel .prev-button,
-    .carousel .next-button,
-    .gallery .prev-button,
-    .gallery .next-button {
-        padding: 10px 15px;
-        font-size: 1.3em;
-        left: 0px; /* Врівень з краєм зображення */
-        right: 0px;
+    /* Змінено позиціонування кнопок на мобільних */
+    .control-button {
+        padding: 6px 10px; /* Ще менший розмір */
+        font-size: 1.2em;
+        /* Розташуємо кнопки всередині зображення, накладання на зображення є очікуваним */
+        left: 5px; /* Відступ від лівого краю зображення */
+        right: 5px; /* Відступ від правого краю зображення */
+        top: 50%; /* Центруємо по вертикалі */
+        transform: translateY(-50%); /* Точне центрування */
     }
 
     .music-player-container, .music-list ul {

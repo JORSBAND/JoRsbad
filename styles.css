@@ -49,13 +49,15 @@ body.light-theme nav ul li a.active {
     text-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
 }
 
-body.light-theme .lang-toggle-btn {
+body.light-theme .lang-toggle-btn,
+body.light-theme #theme-toggle-btn { /* Застосовуємо до обох кнопок */
     background-color: #cc0000;
     color: #fff;
     box-shadow: 0 0 8px rgba(204, 0, 0, 0.3);
 }
 
-body.light-theme .lang-toggle-btn:hover {
+body.light-theme .lang-toggle-btn:hover,
+body.light-theme #theme-toggle-btn:hover { /* Застосовуємо до обох кнопок */
     background-color: #990000;
     box-shadow: 0 0 15px rgba(204, 0, 0, 0.5);
 }
@@ -104,6 +106,34 @@ body.light-theme .social-links-grid p {
     background-color: #e0e0e0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+/* Світла тема для музичної секції */
+body.light-theme .music-player-container {
+    background-color: #e8e8e8;
+    border-color: #cc0000;
+    box-shadow: 0 0 20px rgba(204, 0, 0, 0.3);
+}
+
+body.light-theme #audio-player {
+    background-color: #d0d0d0; /* Світліший фон для плеєра */
+}
+
+body.light-theme .track-button {
+    background-color: #cc0000;
+    color: #fff;
+}
+
+body.light-theme .track-button:hover {
+    background-color: #990000;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(204, 0, 0, 0.5);
+}
+
+body.light-theme .track-button.active {
+    background-color: #770000;
+    border-color: #1a1a1a;
+    box-shadow: 0 0 25px rgba(255, 102, 102, 0.5);
+}
+
 
 /* Анімація переходу зображень (fade-in/fade-out) */
 @keyframes fadeOut {
@@ -219,7 +249,7 @@ nav ul li a.active {
 }
 
 /* Кнопка перемикання мови */
-.lang-toggle-btn {
+.lang-toggle-btn, #theme-toggle-btn { /* Об'єднано стилі для обох кнопок */
     font-family: 'Exo 2', sans-serif;
     background-color: #e60000; /* Червоний фон */
     color: #fff;
@@ -234,7 +264,7 @@ nav ul li a.active {
     z-index: 100;
 }
 
-.lang-toggle-btn:hover {
+.lang-toggle-btn:hover, #theme-toggle-btn:hover { /* Об'єднано стилі для обох кнопок */
     background-color: #cc0000; /* Темніший червоний при наведенні */
     transform: translateY(-3px); /* Невеликий підйом */
     box-shadow: 0 0 15px rgba(230, 0, 0, 0.8); /* Сильніше світіння */
@@ -469,29 +499,36 @@ main section p {
 .music-player-container {
     width: 90%;
     max-width: 800px; /* Збільшена максимальна ширина */
-    background-color: #333333; /* Темніший фон */
+    background-color: #3a3a3a; /* Темніший фон, схожий на band-info */
     border-radius: 10px;
     padding: 25px; /* Збільшений відступ */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-    border: 1px solid #444;
+    box-shadow: 0 0 20px rgba(230, 0, 0, 0.7); /* Сильніша тінь */
+    border: 2px solid #e60000; /* Червона рамка */
 }
 
 #audio-player {
     width: 100%;
-    background-color: #444;
+    background-color: #444; /* Залишаємо для фону елемента управління */
     border-radius: 5px;
     outline: none; /* Видаляємо обведення фокусу */
+    margin-bottom: 20px; /* Відступ від списку треків */
+}
+
+.music-list { /* Обгортка для ul */
+    width: 100%; /* Розтягуємо на всю ширину контейнера */
+    max-width: 800px; /* Обмежуємо ту ж максимальну ширину, що й плеєр */
+    padding-top: 0; /* Прибираємо зайвий відступ */
 }
 
 .music-list ul {
     list-style: none;
     padding: 0;
-    width: 90%;
-    max-width: 800px;
+    margin: 0; /* Прибираємо стандартні маржини */
+    width: 100%; /* Забезпечуємо розтягування на всю ширину .music-list */
 }
 
 .music-list li {
-    margin-bottom: 15px; /* Більший відступ */
+    margin-bottom: 15px; /* Більший відступ між кнопками */
 }
 
 .track-button {
@@ -502,11 +539,12 @@ main section p {
     padding: 15px 25px; /* Збільшений розмір */
     font-size: 1.2em;
     font-weight: 700;
+    text-transform: uppercase; /* Агресивний стиль */
     border-radius: 8px;
     cursor: pointer;
-    width: 100%;
+    width: 100%; /* Розтягуємо на всю ширину */
     text-align: left;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     position: relative; /* Для псевдоелементів */
     overflow: hidden; /* Щоб світіння не виходило за межі */

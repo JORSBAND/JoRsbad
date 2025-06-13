@@ -256,7 +256,7 @@ main section p {
 .carousel img {
     width: 100%;
     height: auto;
-    max-height: 450px; /* Збільшена максимальна висота */
+    max-height: 600px; /* Збільшена максимальна висота, відповідає галереї */
     border-radius: 10px; /* Злегка заокруглені кути */
     object-fit: cover;
     box-shadow: 0 0 15px rgba(230, 0, 0, 0.6); /* Червоне світіння */
@@ -284,8 +284,8 @@ main section p {
 /* Кнопки управління каруселями та галереєю (оновлений мінімалістичний дизайн) */
 .control-button {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 50%; /* Глобальна установка, буде перевизначена в медіазапитах */
+    transform: translateY(-50%); /* Глобальна установка, буде перевизначена в медіазапитах */
     background: transparent; /* Мінімалістичний: прозорий фон */
     color: #e60000; /* Червоний колір стрілок */
     border: 2px solid #e60000; /* Товста червона рамка */
@@ -589,6 +589,7 @@ footer a:hover {
         max-width: 90%; /* Займає майже всю ширину */
     }
 
+    /* Оновлено max-height для .carousel img на середніх екранах */
     .carousel img, .gallery .image-container img {
         max-height: 350px;
     }
@@ -701,14 +702,27 @@ footer a:hover {
         gap: 25px;
     }
 
+    .carousel, .gallery .image-container {
+        /* Додано для розміщення кнопок внизу */
+        padding-bottom: 60px; /* Створює простір для кнопок */
+        max-height: none; /* Дозволяє контейнеру розширюватися */
+        height: auto; /* Дозволяє висоті адаптуватися до вмісту */
+    }
+
+    /* Оновлено max-height для .carousel img на малих екранах */
     .carousel img, .gallery .image-container img {
         max-height: 280px;
+        margin-bottom: 10px; /* Додано для відступу між зображенням і кнопками */
     }
 
     .control-button {
         padding: 6px 10px; /* Ще менший розмір */
         font-size: 1.2em;
-        /* Видалено left/right, щоб вони не розтягувалися */
+        top: auto; /* Вимикаємо вертикальне центрування */
+        bottom: 10px; /* Позиціонування від нижнього краю контейнера */
+        transform: none; /* Вимикаємо translateY */
+        width: 40px; /* Фіксована ширина */
+        height: 40px; /* Фіксована висота */
     }
     .carousel .prev-button, .gallery .prev-button {
         left: 5px; /* Зсуваємо ближче до лівого краю зображення */
@@ -755,6 +769,7 @@ footer a:hover {
         font-size: 1.8em;
     }
 
+    /* Оновлено max-height для .carousel img на найменших екранах */
     .carousel img, .gallery .image-container img {
         max-height: 200px;
     }

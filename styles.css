@@ -164,7 +164,8 @@ header {
     background-color: #2a2a2a; /* Темніший сірий для шапки */
     border-bottom: 2px solid #e60000; /* Червона лінія знизу */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Виразна тінь */
-    flex-wrap: wrap; /* Дозволяє елементам переноситися на наступний рядок */
+    flex-wrap: nowrap; /* Запобігаємо перенесенню елементів в шапці на один рядок */
+    position: relative; /* Для абсолютного позиціонування мобільної навігації */
 }
 
 header .logo h1 {
@@ -180,7 +181,7 @@ header .logo h1 {
 
 /* Стилі для псевдоелемента при наведенні на JORS */
 header .logo h1::after {
-    content: "Металістам на інструменти: 4441 1110 5475 1544"; /* Текст, який з'явиться при наведенні */
+    content: "на інструменти: 4441 1110 5475 1544"; /* Оновлений текст */
     position: absolute;
     top: 100%; /* Розміщуємо під текстом JORS */
     left: 50%;
@@ -189,7 +190,9 @@ header .logo h1::after {
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
-    white-space: nowrap; /* Запобігаємо перенесенню тексту */
+    /* white-space: nowrap; видалено, щоб дозволити перенесення тексту */
+    text-align: center; /* Центруємо перенесений текст */
+    max-width: 180px; /* Обмежуємо ширину, щоб уникнути виходу за межі екрану */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease, top 0.3s ease;
@@ -213,7 +216,7 @@ header .logo h1:hover::after {
     display: flex;
     align-items: center;
     gap: 30px; /* Більший простір між навігацією та кнопкою мови */
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Дозволяє елементам переноситися на наступний рядок */
     justify-content: flex-end;
     flex-grow: 1;
 }
@@ -711,7 +714,7 @@ footer a:hover {
         padding: 5px 10px;
     }
 
-    .lang-toggle-btn, .theme-toggle-btn {
+    .lang-toggle-btn, #theme-toggle-btn {
         padding: 6px 10px;
         font-size: 0.9em;
     }
@@ -781,44 +784,87 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+    /* Header залишається горизонтальним для логотипу та елементів керування */
     header {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         padding: 15px 20px;
+        flex-wrap: nowrap; /* Запобігаємо переносу в шапці */
     }
 
+    /* header-right: для кнопок мови/теми та гамбургера */
     .header-right {
-        flex-direction: column;
-        width: 100%;
-        gap: 15px;
-        margin-top: 15px;
-        justify-content: center;
+        flex-direction: row; /* Кнопки розташовуються в ряд */
+        width: auto;
+        gap: 10px;
+        margin-top: 0;
+        justify-content: flex-end;
+        align-items: center;
+        flex-grow: 0;
     }
 
-    .lang-toggle-btn, .theme-toggle-btn {
-        position: static;
-        margin-left: 0;
+    /* Гамбургер іконка: відображається тільки на мобільних */
+    .mobile-menu-toggle {
+        display: block;
+        order: 1; /* Позиціонування в header-right */
+        font-size: 2em;
+        background: none;
+        border: none;
+        color: #e60000;
+        cursor: pointer;
+        padding: 5px 10px;
+        align-self: center;
     }
 
+    /* Навігаційне меню: приховане за замовчуванням на мобільних */
     nav {
+        position: absolute;
+        top: 100%; /* Позиція під шапкою */
+        left: -100%; /* Приховано зліва за екраном */
         width: 100%;
+        max-height: 0; /* Висота 0 для анімації */
+        overflow: hidden;
+        background-color: #2a2a2a; /* Фон меню */
+        transition: max-height 0.5s ease-out, left 0.5s ease-out, opacity 0.5s ease-out; /* Плавна анімація */
+        opacity: 0;
+        z-index: 98; /* Під елементами шапки */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тінь для виїжджаючого меню */
+    }
+
+    /* Фон меню для світлої теми */
+    body.light-theme nav {
+        background-color: #e0e0e0;
+    }
+
+    /* Навігаційне меню: стан "відкрито" */
+    body.menu-open nav {
+        left: 0; /* Виїжджає на екран */
+        max-height: 500px; /* Достатня висота для всіх пунктів */
+        opacity: 1;
     }
 
     nav ul {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
+        flex-direction: column; /* Розташування пунктів меню вертикально */
+        padding: 20px 0; /* Внутрішній відступ */
+        gap: 0; /* Прибираємо простір між li елементами */
     }
 
     nav ul li {
         width: 100%;
         text-align: center;
+        margin-bottom: 5px;
     }
 
     nav ul li a {
+        display: block; /* Посилання заповнюють всю ширину для зручності натискання */
+        padding: 10px;
+        font-size: 1.1em;
+    }
+
+    .lang-toggle-btn, #theme-toggle-btn {
+        padding: 8px 12px; /* Трохи більші кнопки для зручності натискання */
         font-size: 1em;
-        display: block;
-        padding: 8px;
     }
 
     body.home .hero {

@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { src: "images/bando.jpg", id: "orest" }       // Орест - басист
     ];
 
-
+    // Функція для встановлення мови
     const setLanguage = (lang) => {
         document.documentElement.lang = lang; // Встановлюємо атрибут lang для <html>
         localStorage.setItem('lang', lang); // Зберігаємо обрану мову
@@ -160,9 +160,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Ініціалізація мови при завантаженні сторінки
+    // Функція для встановлення теми
+    const setTheme = (theme) => {
+        document.body.classList.remove('light-theme', 'dark-theme'); // Видаляємо всі теми
+        document.body.classList.add(`${theme}-theme`); // Додаємо вибрану тему
+        localStorage.setItem('theme', theme); // Зберігаємо обрану тему
+        // Оновлюємо текст на кнопці теми
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        if (themeToggleBtn) {
+            themeToggleBtn.textContent = theme === 'dark' ? 'Light' : 'Dark';
+        }
+    };
+
+    // Ініціалізація мови та теми при завантаженні сторінки
     const savedLang = localStorage.getItem('lang') || 'uk'; // За замовчуванням українська
     setLanguage(savedLang);
+
+    const savedTheme = localStorage.getItem('theme') || 'dark'; // За замовчуванням темна тема
+    setTheme(savedTheme);
+
 
     // Перемикач мови
     const langToggleBtn = document.getElementById('lang-toggle-btn');
@@ -176,6 +192,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Перемикач теми
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    if (themeToggleBtn) {
+        themeToggleBtn.textContent = savedTheme === 'dark' ? 'Light' : 'Dark'; // Відображаємо поточну тему
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    }
+
+
     // Логіка Галереї зображень
     let currentImageIndex = 0;
     const galleryImage = document.getElementById("gallery-image");
@@ -184,7 +212,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (galleryImage) {
         const updateGalleryImage = () => {
-            galleryImage.src = images[currentImageIndex];
+            // Додаємо клас для анімації зникнення
+            galleryImage.classList.add('fade-out');
+            setTimeout(() => {
+                galleryImage.src = images[currentImageIndex];
+                // Видаляємо клас зникнення та додаємо клас появи
+                galleryImage.classList.remove('fade-out');
+                galleryImage.classList.add('fade-in');
+            }, 300); // Час має відповідати тривалості анімації в CSS
+
+            // Видаляємо клас появи після завершення анімації
+            galleryImage.addEventListener('animationend', () => {
+                galleryImage.classList.remove('fade-in');
+            }, { once: true });
         };
 
         if (galleryPrevButton) {
@@ -227,9 +267,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (bandImageElement && bandInfoTextElement) {
         const updateCarousel = () => {
-            bandImageElement.src = bandImages[currentIndex].src;
-            const currentLang = localStorage.getItem('lang') || 'uk';
-            bandInfoTextElement.textContent = translations[currentLang][`band-info-${bandImages[currentIndex].id}`];
+            // Додаємо клас для анімації зникнення
+            bandImageElement.classList.add('fade-out');
+            setTimeout(() => {
+                bandImageElement.src = bandImages[currentIndex].src;
+                const currentLang = localStorage.getItem('lang') || 'uk';
+                bandInfoTextElement.textContent = translations[currentLang][`band-info-${bandImages[currentIndex].id}`];
+                // Видаляємо клас зникнення та додаємо клас появи
+                bandImageElement.classList.remove('fade-out');
+                bandImageElement.classList.add('fade-in');
+            }, 300); // Час має відповідати тривалості анімації в CSS
+
+            // Видаляємо клас появи після завершення анімації
+            bandImageElement.addEventListener('animationend', () => {
+                bandImageElement.classList.remove('fade-in');
+            }, { once: true });
         };
 
         const prevBandButton = document.querySelector(".band-carousel .prev-button");
@@ -246,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentIndex = (currentIndex + 1) % bandImages.length;
                 updateCarousel();
             });
-        } // Виправлена зайва дужка тут
+        }
 
         updateCarousel(); // Initial call to set the first member's info
     }

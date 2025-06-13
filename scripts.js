@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'contacts-title': 'Контакти',
             'contacts-email': 'Електронна пошта',
             'instagram-title': 'Instagram',
-            'instagram-group': 'Група', // Додано для Instagram групи
+            'instagram-group': 'Група',
             'instagram-david': 'Давид',
             'instagram-oleksandr': 'Олександр',
             'instagram-orest': 'Орест',
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'contacts-title': 'Contacts',
             'contacts-email': 'Email',
             'instagram-title': 'Instagram',
-            'instagram-group': 'Group', // Додано для Instagram групи
+            'instagram-group': 'Group',
             'instagram-david': 'David',
             'instagram-oleksandr': 'Oleksandr',
             'instagram-orest': 'Orest',
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Дані для галереї зображень - Переміщено на початок
+    // Дані для галереї зображень
     const images = [
         "images/band1.jpg",
         "images/band2.jpg",
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/band4.jpg"
     ];
 
-    // Дані для каруселі учасників - Переміщено на початок
+    // Дані для каруселі учасників
     const bandImages = [
         { src: "images/bandor.jpg", id: "oleksandr" }, // Олександр - ритм-гітарист
         { src: "images/bandd.jpg", id: "david" },      // Давид - соло-гітарист
@@ -131,7 +131,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const bandImageElement = document.getElementById("band-image");
         const bandInfoTextElement = document.getElementById("band-info-text");
         if (bandImageElement && bandInfoTextElement) {
-            const currentBandMember = bandImages.find(member => bandImageElement.src.includes(member.src.split('/').pop()));
+            // Отримуємо назву файлу зображення для пошуку відповідного члена
+            const currentImageFileName = bandImageElement.src.split('/').pop();
+            const currentBandMember = bandImages.find(member => member.src.includes(currentImageFileName));
+            
             if (currentBandMember) {
                 bandInfoTextElement.textContent = translations[lang][`band-info-${currentBandMember.id}`];
             } else {
@@ -243,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentIndex = (currentIndex + 1) % bandImages.length;
                 updateCarousel();
             });
-        });
+        } // Виправлена зайва дужка тут
 
         updateCarousel(); // Initial call to set the first member's info
     }

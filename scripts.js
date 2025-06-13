@@ -203,6 +203,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Мобільне меню (гамбургер)
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', () => {
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Закриття меню при кліку на посилання
+        document.querySelectorAll('.navigation-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('menu-open');
+            });
+        });
+    }
+
 
     // Логіка Галереї зображень
     let currentImageIndex = 0;
@@ -222,9 +237,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300); // Час має відповідати тривалості анімації в CSS
 
             // Видаляємо клас появи після завершення анімації
-            galleryImage.addEventListener('animationend', () => {
+            galleryImage.addEventListener('animationend', function handler() {
                 galleryImage.classList.remove('fade-in');
-            }, { once: true });
+                galleryImage.removeEventListener('animationend', handler); // Видаляємо обробник після одного виконання
+            });
         };
 
         if (galleryPrevButton) {
@@ -279,9 +295,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300); // Час має відповідати тривалості анімації в CSS
 
             // Видаляємо клас появи після завершення анімації
-            bandImageElement.addEventListener('animationend', () => {
+            bandImageElement.addEventListener('animationend', function handler() {
                 bandImageElement.classList.remove('fade-in');
-            }, { once: true });
+                bandImageElement.removeEventListener('animationend', handler); // Видаляємо обробник після одного виконання
+            });
         };
 
         const prevBandButton = document.querySelector(".band-carousel .prev-button");

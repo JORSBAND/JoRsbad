@@ -597,9 +597,17 @@ footer a:hover {
     .control-button {
         padding: 8px 12px; /* Зменшуємо розмір */
         font-size: 1.3em;
-        left: 5px; /* Зсуваємо ближче до країв */
-        right: 5px;
+        /* Видалено left/right, щоб вони не розтягувалися */
     }
+    .carousel .prev-button, .gallery .prev-button {
+        left: 10px; /* Зсуваємо ближче до лівого краю зображення */
+        right: auto; /* Скидаємо, щоб не конфліктувало */
+    }
+    .carousel .next-button, .gallery .next-button {
+        right: 10px; /* Зсуваємо ближче до правого краю зображення */
+        left: auto; /* Скидаємо, щоб не конфліктувало */
+    }
+
 
     .music-player-container, .music-list ul {
         max-width: 90%;
@@ -700,11 +708,17 @@ footer a:hover {
     .control-button {
         padding: 6px 10px; /* Ще менший розмір */
         font-size: 1.2em;
-        left: 5px; /* Відступ від лівого краю зображення */
-        right: 5px; /* Відступ від правого краю зображення */
-        top: 50%; /* Центруємо по вертикалі */
-        transform: translateY(-50%); /* Точне центрування */
+        /* Видалено left/right, щоб вони не розтягувалися */
     }
+    .carousel .prev-button, .gallery .prev-button {
+        left: 5px; /* Зсуваємо ближче до лівого краю зображення */
+        right: auto;
+    }
+    .carousel .next-button, .gallery .next-button {
+        right: 5px; /* Зсуваємо ближче до правого краю зображення */
+        left: auto;
+    }
+
 
     .music-player-container, .music-list ul {
         max-width: 95%;

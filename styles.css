@@ -13,7 +13,117 @@ body {
     font-family: 'Lato', sans-serif; /* Новий шрифт для основного тексту */
     background-color: #1a1a1a; /* Дуже темний фон */
     color: #f5f5f5; /* Світлий текст */
+    transition: background-color 0.5s ease, color 0.5s ease; /* Плавний перехід для теми */
 }
+
+/* Світла тема */
+body.light-theme {
+    background-color: #f5f5f5; /* Світлий фон */
+    color: #1a1a1a; /* Темний текст */
+}
+
+body.light-theme header {
+    background-color: #e0e0e0; /* Світліший сірий для шапки */
+    border-bottom-color: #cc0000; /* Червона лінія */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme header .logo h1 {
+    color: #cc0000; /* Червоний колір */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme header .logo h1::after {
+    background-color: #cc0000;
+    border-color: #ff3333;
+    box-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
+}
+
+body.light-theme nav ul li a {
+    color: #444444; /* Темніший сірий для посилань */
+}
+
+body.light-theme nav ul li a:hover,
+body.light-theme nav ul li a.active {
+    color: #cc0000; /* Червоний при наведенні/активний */
+    text-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
+}
+
+body.light-theme .lang-toggle-btn {
+    background-color: #cc0000;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(204, 0, 0, 0.3);
+}
+
+body.light-theme .lang-toggle-btn:hover {
+    background-color: #990000;
+    box-shadow: 0 0 15px rgba(204, 0, 0, 0.5);
+}
+
+body.light-theme main section {
+    background-color: #ffffff; /* Білий фон для секцій */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dddddd;
+}
+
+body.light-theme main section h2 {
+    color: #cc0000;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme main section p {
+    color: #333333; /* Темніший текст */
+}
+
+body.light-theme .band-carousel .band-info {
+    background-color: #f0f0f0; /* Світліший фон для інформації про учасника */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #cccccc;
+}
+
+body.light-theme .band-carousel .band-info p {
+    color: #333333;
+}
+
+body.light-theme footer {
+    background-color: #e0e0e0;
+    color: #444444;
+    border-top-color: #cc0000;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme footer a {
+    color: #cc0000;
+}
+
+body.light-theme footer a:hover {
+    color: #990000;
+}
+
+body.light-theme .social-links-grid p {
+    background-color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Анімація переходу зображень (fade-in/fade-out) */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-out {
+    animation: fadeOut 0.3s forwards; /* 0.3s має відповідати setTimeout у JS */
+}
+
+.fade-in {
+    animation: fadeIn 0.3s forwards; /* 0.3s має відповідати setTimeout у JS */
+}
+
 
 /* Шапка сайту */
 header {
@@ -224,7 +334,7 @@ main section h2 {
     text-align: center;
     color: #e60000;
     margin-bottom: 30px; /* Більший відступ */
-    font-size: 3em; /* Більший розмір */
+    font-size: 3em;
     letter-spacing: 1.5px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
@@ -563,7 +673,7 @@ footer a:hover {
         padding: 5px 10px;
     }
 
-    .lang-toggle-btn {
+    .lang-toggle-btn, .theme-toggle-btn {
         padding: 6px 10px;
         font-size: 0.9em;
     }
@@ -647,7 +757,7 @@ footer a:hover {
         justify-content: center;
     }
 
-    .lang-toggle-btn {
+    .lang-toggle-btn, .theme-toggle-btn {
         position: static;
         margin-left: 0;
     }

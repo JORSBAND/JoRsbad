@@ -537,11 +537,11 @@ main section p {
 .countdown-container {
     display: flex;
     justify-content: space-around; /* Розподіляє елементи рівномірно */
-    gap: 10px; /* Зменшений простір між елементами */
+    gap: 5px; /* Ще більше зменшений простір між елементами */
     flex-wrap: nowrap; /* Запобігає переносу на новий рядок */
     background-color: #3a3a3a; /* Темніший фон */
     border-radius: 10px;
-    padding: 15px 10px; /* Зменшені відступи */
+    padding: 10px 5px; /* Ще більше зменшені відступи */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border: 2px solid #e60000; /* Червона рамка */
     width: 100%; /* Повна ширина батьківського елемента */
@@ -556,12 +556,12 @@ main section p {
     min-width: unset; /* Видалено мінімальну ширину для гнучкості */
     flex-grow: 1; /* Дозволяє елементам розширюватися */
     flex-shrink: 1; /* Дозволяє елементам стискатися */
-    padding: 0 5px; /* Горизонтальний відступ всередині елементів */
+    padding: 0 3px; /* Ще менший горизонтальний відступ всередині елементів */
 }
 
 .countdown-item span {
     font-family: 'Exo 2', sans-serif;
-    font-size: 2.5em; /* Зменшений базовий розмір */
+    font-size: 2em; /* Зменшений розмір для чисел */
     font-weight: 800;
     color: #e60000;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
@@ -570,9 +570,9 @@ main section p {
 
 .countdown-label {
     font-family: 'Lato', sans-serif;
-    font-size: 0.9em; /* Зменшений базовий розмір */
+    font-size: 0.8em; /* Зменшений розмір для міток */
     color: #cccccc;
-    margin-top: 5px;
+    margin-top: 3px; /* Зменшений відступ зверху */
     text-transform: uppercase;
     white-space: nowrap; /* Запобігає розриву міток */
 }
@@ -782,11 +782,11 @@ footer a:hover {
     }
 
     .countdown-item span {
-        font-size: 2.8em;
+        font-size: 2.2em; /* Зменшено для планшетів */
     }
 
     .countdown-label {
-        font-size: 1em;
+        font-size: 0.9em; /* Зменшено для планшетів */
     }
 
     .privacy-content h3, .contact-info h2 {
@@ -951,16 +951,16 @@ footer a:hover {
     }
 
     .countdown-container {
-        gap: 15px;
-        padding: 20px;
+        gap: 10px; /* Збільшений відступ для мобільних, щоб елементи не були надто щільними */
+        padding: 15px; /* Збільшений відступ для мобільних */
     }
 
     .countdown-item span {
-        font-size: 2.2em;
+        font-size: 2em; /* Зменшено для мобільних */
     }
 
     .countdown-label {
-        font-size: 0.9em;
+        font-size: 0.8em; /* Зменшено для мобільних */
     }
 
     .privacy-content h3, .contact-info h2 {
@@ -1003,10 +1003,10 @@ footer a:hover {
     }
 
     .countdown-item span {
-        font-size: 1.8em;
+        font-size: 1.5em; /* Ще менше для дуже малих екранів */
     }
 
     .countdown-label {
-        font-size: 0.8em;
+        font-size: 0.7em; /* Ще менше для дуже малих екранів */
     }
 }

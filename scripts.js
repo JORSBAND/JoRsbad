@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Логіка таймера зворотного відліку для сторінки "Музика"
-    const countdownDate = new Date("Aug 15, 2028 00:00:00").getTime();
+    const countdownDate = new Date("Aug 15, 2025 00:00:00").getTime(); // Виправлено рік на 2025
 
     const updateCountdown = () => {
         const now = new Date().getTime();

@@ -108,32 +108,28 @@ body.light-theme .social-links-grid p {
 }
 
 /* Світла тема для музичної секції */
-body.light-theme .music-player-container {
+body.light-theme .music-release-section { /* Змінено селектор */
     background-color: #e8e8e8;
     border-color: #cc0000;
     box-shadow: 0 0 20px rgba(204, 0, 0, 0.3);
 }
 
-body.light-theme #audio-player {
-    background-color: #d0d0d0; /* Світліший фон для плеєра */
+body.light-theme .album-announcement {
+    color: #cc0000;
 }
 
-body.light-theme .track-button {
-    background-color: #cc0000;
-    color: #fff;
+body.light-theme .countdown-container {
+    background-color: #d0d0d0;
+    border-color: #cc0000;
 }
 
-body.light-theme .track-button:hover {
-    background-color: #990000;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(204, 0, 0, 0.5);
+body.light-theme .countdown-item span {
+    color: #cc0000;
 }
 
-body.light-theme .track-button.active {
-    background-color: #770000;
-    border-color: #1a1a1a;
-    box-shadow: 0 0 25px rgba(255, 102, 102, 0.5);
+body.light-theme .countdown-label {
+    color: #333333;
 }
-
 
 /* Анімація переходу зображень (fade-in/fade-out) */
 @keyframes fadeOut {
@@ -277,7 +273,7 @@ nav ul li a.active {
 body.home .hero {
     text-align: center;
     padding: 80px 20px; /* Більший відступ */
-    background-image: url('images/20250410_191959%20(2).jpg'); /* Фон тільки для Головної сторінки */
+    background-image: none; /* ВИДАЛЕНО ФОН */
     background-size: cover;
     background-position: center;
     color: #f5f5f5;
@@ -298,7 +294,7 @@ body.home .hero::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Напівпрозорий темний шар для кращої читабельності тексту */
+    background: none; /* ВИДАЛЕНО ШАР */
     z-index: -1;
 }
 
@@ -308,8 +304,8 @@ body.home .band-image {
     margin: 0 auto 30px; /* Відступ знизу */
     width: 90%;
     max-width: 600px; /* Збільшена максимальна ширина */
-    border: 3px solid #e60000; /* Червона рамка */
-    box-shadow: 0 0 20px rgba(230, 0, 0, 0.7); /* Сильніше червоне світіння */
+    border: none; /* ВИДАЛЕНО РАМКУ */
+    box-shadow: none; /* ВИДАЛЕНО ТІНЬ */
     border-radius: 10px; /* Заокруглення кутів */
     overflow: hidden; /* Обрізаємо вміст, що виходить за рамки */
 }
@@ -490,80 +486,90 @@ main section p {
 }
 
 
-/* Музичний плеєр */
-.music-section {
+/* Музичний розділ з таймером */
+.music-release-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px; /* Збільшений відступ */
-    padding: 30px;
-}
-
-.music-player-container {
-    width: 90%;
-    max-width: 800px; /* Збільшена максимальна ширина */
-    background-color: #3a3a3a; /* Темніший фон, схожий на band-info */
+    gap: 30px; /* Відступ між елементами */
+    padding: 40px 20px;
+    background-color: #222222; /* Темніший сірий фон */
     border-radius: 10px;
-    padding: 25px; /* Збільшений відступ */
-    box-shadow: 0 0 20px rgba(230, 0, 0, 0.7); /* Сильніша тінь */
-    border: 2px solid #e60000; /* Червона рамка */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    border: 1px solid #333333;
+    max-width: 900px;
+    margin: 40px auto;
 }
 
-#audio-player {
-    width: 100%;
-    background-color: #444; /* Залишаємо для фону елемента управління */
-    border-radius: 5px;
-    outline: none; /* Видаляємо обведення фокусу */
-    margin-bottom: 20px; /* Відступ від списку треків */
-}
-
-.music-list { /* Обгортка для ul */
-    width: 100%; /* Розтягуємо на всю ширину контейнера */
-    max-width: 800px; /* Обмежуємо ту ж максимальну ширину, що й плеєр */
-    padding-top: 0; /* Прибираємо зайвий відступ */
-}
-
-.music-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0; /* Прибираємо стандартні маржини */
-    width: 100%; /* Забезпечуємо розтягування на всю ширину .music-list */
-}
-
-.music-list li {
-    margin-bottom: 15px; /* Більший відступ між кнопками */
-}
-
-.track-button {
+.album-announcement {
     font-family: 'Exo 2', sans-serif;
-    background-color: #e60000;
-    color: #fff;
-    border: none;
-    padding: 15px 25px; /* Збільшений розмір */
-    font-size: 1.2em;
-    font-weight: 700;
-    text-transform: uppercase; /* Агресивний стиль */
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%; /* Розтягуємо на всю ширину */
-    text-align: left;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    position: relative; /* Для псевдоелементів */
-    overflow: hidden; /* Щоб світіння не виходило за межі */
+    font-size: 2.5em;
+    color: #e60000;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-.track-button:hover {
-    background-color: #cc0000;
-    transform: translateY(-5px); /* Сильніший підйом */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), 0 0 20px #e60000; /* Сильніша тінь і світіння */
+.album-art-container {
+    width: 80%;
+    max-width: 400px; /* Максимальна ширина для обкладинки */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(230, 0, 0, 0.8); /* Яскраве червоне світіння */
+    border: 3px solid #e60000; /* Червона рамка */
+    margin-bottom: 30px;
 }
 
-.track-button.active {
-    background-color: #990000;
-    border: 3px solid #fff; /* Товстіша рамка */
-    box-shadow: 0 0 25px #ff6666; /* Сильніше світіння для активного */
+.album-art-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
 }
+
+.album-art-container img:hover {
+    transform: scale(1.05);
+}
+
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Простір між елементами таймера */
+    flex-wrap: wrap;
+    background-color: #3a3a3a; /* Темніший фон */
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid #e60000; /* Червона рамка */
+    width: 95%; /* Трохи менше ширини */
+    max-width: 700px;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px; /* Мінімальна ширина для кращого вигляду */
+}
+
+.countdown-item span {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 3.5em; /* Великий розмір для чисел */
+    font-weight: 800;
+    color: #e60000; /* Червоний колір чисел */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.countdown-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1em;
+    color: #cccccc;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
 
 /* Політика конфіденційності та Контакти */
 .privacy-content, .contact-info {
@@ -760,14 +766,20 @@ footer a:hover {
         left: auto; /* Скидаємо, щоб не конфліктувало */
     }
 
-
-    .music-player-container, .music-list ul {
+    .music-release-section { /* Змінено селектор */
         max-width: 90%;
     }
 
-    .track-button {
+    .album-announcement {
+        font-size: 2em;
+    }
+
+    .countdown-item span {
+        font-size: 2.8em;
+    }
+
+    .countdown-label {
         font-size: 1em;
-        padding: 12px 20px;
     }
 
     .privacy-content h3, .contact-info h2 {
@@ -927,14 +939,21 @@ footer a:hover {
         left: auto;
     }
 
-
-    .music-player-container, .music-list ul {
-        max-width: 95%;
+    .album-announcement {
+        font-size: 1.8em;
     }
 
-    .track-button {
-        font-size: 0.95em;
-        padding: 10px 15px;
+    .countdown-container {
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .countdown-item span {
+        font-size: 2.2em;
+    }
+
+    .countdown-label {
+        font-size: 0.9em;
     }
 
     .privacy-content h3, .contact-info h2 {
@@ -970,5 +989,17 @@ footer a:hover {
 
     .social-links-grid {
         grid-template-columns: 1fr; /* Одна колонка на найменших екранах */
+    }
+
+    .album-announcement {
+        font-size: 1.5em;
+    }
+
+    .countdown-item span {
+        font-size: 1.8em;
+    }
+
+    .countdown-label {
+        font-size: 0.8em;
     }
 }

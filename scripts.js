@@ -14,7 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
             'gallery-title': 'Галерея',
             'gallery-subtitle': 'Дивіться фотографії та моменти гурту JORS!',
             'music-title': 'Музика',
-            'music-subtitle': 'Слухайте наші треки тут!',
+            'music-subtitle': 'Скоро виходить альбом HOPEKILLER!',
+            'album-announcement': 'Скоро виходить альбом HOPEKILLER!',
+            'countdown-days': 'Дні',
+            'countdown-hours': 'Години',
+            'countdown-minutes': 'Хвилини',
+            'countdown-seconds': 'Секунди',
             'contacts-title': 'Контакти',
             'contacts-email': 'Електронна пошта',
             'instagram-title': 'Instagram',
@@ -37,14 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'band-info-oleksandr': 'Олександр — ритм-гітарист, співзасновник гурту. Його рифи створюють міцний фундамент для нашого звучання.',
             'band-info-david': 'Давид — соло-гітарист та один із засновників. Його віртуозні соло прорізають простір, даруючи незабутні емоції.',
             'band-info-yaroslav': 'Ярослав — наш потужний барабанщик. Його енергійні ритми тримають увесь гурт і заряджають публіку.',
-            'band-info-orest': 'Орест — басист, чиї глибокі та насичені басові лінії додають потужності та об\'єму нашій музиці.',
-            'track1': 'Метал 1',
-            'track2': 'Метал 2',
-            'track3': 'Метал 3',
-            'track4': 'Метал 4',
-            'track5': 'Метал 5',
-            'track6': 'Метал 6',
-            'audio-not-supported': 'Ваш браузер не підтримує елемент <code>audio</code>.'
+            'band-info-orest': 'Орест — басист, чиї глибокі та насичені басові лінії додають потужності та об\'єму нашій музиці.'
         },
         'en': {
             'home': 'Home',
@@ -59,7 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
             'gallery-title': 'Gallery',
             'gallery-subtitle': 'See photos and moments of the JORS band!',
             'music-title': 'Music',
-            'music-subtitle': 'Listen to our tracks here!',
+            'music-subtitle': 'Album HOPEKILLER coming soon!',
+            'album-announcement': 'Album HOPEKILLER coming soon!',
+            'countdown-days': 'Days',
+            'countdown-hours': 'Hours',
+            'countdown-minutes': 'Minutes',
+            'countdown-seconds': 'Seconds',
             'contacts-title': 'Contacts',
             'contacts-email': 'Email',
             'instagram-title': 'Instagram',
@@ -82,14 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'band-info-oleksandr': 'Oleksandr is the rhythm guitarist and co-founder. His riffs provide a solid foundation for our sound.',
             'band-info-david': 'David is the lead guitarist and one of the founders. His virtuosic solos cut through the air, delivering unforgettable emotions.',
             'band-info-yaroslav': 'Yaroslav is our powerful drummer. His energetic rhythms hold the whole band together and electrify the audience.',
-            'band-info-orest': 'Orest is the bassist, whose deep and rich bass lines add power and volume to our music.',
-            'track1': 'Metal 1',
-            'track2': 'Metal 2',
-            'track3': 'Metal 3',
-            'track4': 'Metal 4',
-            'track5': 'Metal 5',
-            'track6': 'Metal 6',
-            'audio-not-supported': 'Your browser does not support the <code>audio</code> element.'
+            'band-info-orest': 'Orest is the bassist, whose deep and rich bass lines add power and volume to our music.'
         }
     };
 
@@ -142,21 +138,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Оновлення назв треків
-        document.querySelectorAll('.track-button').forEach(button => {
-            const key = button.getAttribute('data-key');
+        // Оновлення написів таймера
+        const countdownLabels = document.querySelectorAll('.countdown-label');
+        countdownLabels.forEach(label => {
+            const key = label.getAttribute('data-key');
             if (translations[lang] && translations[lang][key]) {
-                button.textContent = translations[lang][key];
+                label.textContent = translations[lang][key];
             }
         });
 
-        // Оновлення повідомлення про непідтримуваний аудіо елемент
-        const audioPlayer = document.getElementById('audio-player');
-        if (audioPlayer) {
-            let audioFallbackSpan = audioPlayer.querySelector('span[data-key="audio-not-supported"]');
-            if (audioFallbackSpan) {
-                audioFallbackSpan.textContent = translations[lang]['audio-not-supported'];
-            }
+        // Оновлення заголовка сторінки "Музика"
+        const musicTitleElement = document.querySelector('title[data-key="music"]');
+        if (musicTitleElement) {
+            musicTitleElement.textContent = translations[lang]['music'];
         }
     };
 
@@ -258,23 +252,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateGalleryImage(); // Ініціалізація першого зображення галереї
     }
 
-    // Аудіоплеєр
-    const audioPlayer = document.getElementById("audio-player");
-    const trackButtons = document.querySelectorAll(".track-button");
-
-    if (audioPlayer && trackButtons.length > 0) {
-        trackButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                const songSrc = button.getAttribute("data-src");
-                audioPlayer.src = songSrc;
-                audioPlayer.play();
-
-                trackButtons.forEach(btn => btn.classList.remove("active"));
-                button.classList.add("active");
-            });
-        });
-    }
-
     // Карусель учасників - Логіка
     let currentIndex = 0;
 
@@ -318,6 +295,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         updateCarousel(); // Initial call to set the first member's info
+    }
+
+    // Логіка таймера зворотного відліку для сторінки "Музика"
+    const countdownDate = new Date("Aug 15, 2028 00:00:00").getTime();
+
+    const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const daysSpan = document.getElementById("days");
+        const hoursSpan = document.getElementById("hours");
+        const minutesSpan = document.getElementById("minutes");
+        const secondsSpan = document.getElementById("seconds");
+
+        if (daysSpan) daysSpan.textContent = String(days).padStart(2, '0');
+        if (hoursSpan) hoursSpan.textContent = String(hours).padStart(2, '0');
+        if (minutesSpan) minutesSpan.textContent = String(minutes).padStart(2, '0');
+        if (secondsSpan) secondsSpan.textContent = String(seconds).padStart(2, '0');
+
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            const albumAnnouncement = document.querySelector('.album-announcement');
+            if (albumAnnouncement) {
+                albumAnnouncement.textContent = "Альбом HOPEKILLER вже вийшов!";
+            }
+            if (daysSpan) daysSpan.textContent = "00";
+            if (hoursSpan) hoursSpan.textContent = "00";
+            if (minutesSpan) minutesSpan.textContent = "00";
+            if (secondsSpan) secondsSpan.textContent = "00";
+        }
+    };
+
+    // Запускаємо таймер тільки на сторінці music.html
+    if (window.location.pathname.includes('music.html')) {
+        updateCountdown(); // Початкове оновлення, щоб уникнути затримки
+        const countdownInterval = setInterval(updateCountdown, 1000);
     }
 
     // Lazy loading зображень (для головної та інших сторінок з атрибутом data-src)

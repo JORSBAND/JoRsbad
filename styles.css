@@ -956,11 +956,15 @@ footer a:hover {
     }
 
     .countdown-item span {
-        font-size: 2em; /* Зменшено для мобільних */
+        font-size: 1.8em; /* Зменшено для мобільних */
     }
 
     .countdown-label {
-        font-size: 0.8em; /* Зменшено для мобільних */
+        font-size: 0.7em; /* Зменшено для мобільних */
+    }
+
+    #seconds-countdown-item { /* Приховуємо секунди на мобільних пристроях */
+        display: none;
     }
 
     .privacy-content h3, .contact-info h2 {

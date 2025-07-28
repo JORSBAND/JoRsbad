@@ -298,7 +298,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Логіка таймера зворотного відліку для сторінки "Музика"
-    const countdownDate = new Date("Aug 15, 2025 00:00:00").getTime(); // Виправлено рік на 2025
+    // Дата релізу альбому: 15 серпня 2025 року, 00:00:00
+    const countdownDate = new Date("Aug 15, 2025 00:00:00").getTime();
 
     const updateCountdown = () => {
         const now = new Date().getTime();
@@ -319,12 +320,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (minutesSpan) minutesSpan.textContent = String(minutes).padStart(2, '0');
         if (secondsSpan) secondsSpan.textContent = String(seconds).padStart(2, '0');
 
+        // Якщо відлік завершено
         if (distance < 0) {
-            clearInterval(countdownInterval);
+            clearInterval(countdownInterval); // Зупиняємо таймер
             const albumAnnouncement = document.querySelector('.album-announcement');
             if (albumAnnouncement) {
-                albumAnnouncement.textContent = "Альбом HOPEKILLER вже вийшов!";
+                albumAnnouncement.textContent = "Альбом HOPEKILLER вже вийшов!"; // Оновлюємо текст
             }
+            // Встановлюємо всі значення таймера на "00"
             if (daysSpan) daysSpan.textContent = "00";
             if (hoursSpan) hoursSpan.textContent = "00";
             if (minutesSpan) minutesSpan.textContent = "00";
@@ -332,10 +335,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    let countdownInterval; // Оголошуємо змінну інтервалу глобально або в області видимості
     // Запускаємо таймер тільки на сторінці music.html
     if (window.location.pathname.includes('music.html')) {
         updateCountdown(); // Початкове оновлення, щоб уникнути затримки
-        const countdownInterval = setInterval(updateCountdown, 1000);
+        countdownInterval = setInterval(updateCountdown, 1000); // Присвоюємо інтервал змінній
     }
 
     // Lazy loading зображень (для головної та інших сторінок з атрибутом data-src)

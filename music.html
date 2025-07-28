@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Музика</title>
+    <title data-key="music">Музика</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
 </head>
@@ -31,26 +31,31 @@
     <main>
         <section class="hero">
             <h2 data-key="music-title">Музика</h2>
-            <p data-key="music-subtitle">Слухайте наші треки тут!</p>
+            <p data-key="music-subtitle">Скоро виходить альбом HOPEKILLER!</p>
         </section>
 
-        <section class="music-section">
-            <div class="music-player-container">
-                <audio id="audio-player" controls>
-                    <source src="music/metal1.mp3" type="audio/mp3">
-                    <span data-key="audio-not-supported">Ваш браузер не підтримує елемент <code>audio</code>.</span>
-                </audio>
+        <section class="music-release-section">
+            <h3 class="album-announcement" data-key="album-announcement">Скоро виходить альбом HOPEKILLER!</h3>
+            <div class="album-art-container">
+                <img src="images/album_placeholder.jpg" alt="Album Cover Placeholder" id="album-photo">
             </div>
-
-            <div class="music-list">
-                <ul>
-                    <li><button class="track-button active" data-src="music/metal1.mp3" data-key="track1">Metal 1</button></li>
-                    <li><button class="track-button" data-src="music/metal2.mp3" data-key="track2">Metal 2</button></li>
-                    <li><button class="track-button" data-src="music/metal3.mp3" data-key="track3">Metal 3</button></li>
-                    <li><button class="track-button" data-src="music/metal4.mp3" data-key="track4">Metal 4</button></li>
-                    <li><button class="track-button" data-src="music/metal5.mp3" data-key="track5">Metal 5</button></li>
-                    <li><button class="track-button" data-src="music/metal6.mp3" data-key="track6">Metal 6</button></li>
-                </ul>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <span class="countdown-label" data-key="countdown-days">Дні</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <span class="countdown-label" data-key="countdown-hours">Години</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <span class="countdown-label" data-key="countdown-minutes">Хвилини</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <span class="countdown-label" data-key="countdown-seconds">Секунди</span>
+                </div>
             </div>
         </section>
     </main>

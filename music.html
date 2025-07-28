@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="music">Музика</title>
+    <title data-key="music-title">Музика</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <h1>JORS</h1> <!-- Змінено з "JORS Метал Гурт" -->
+            <h1>JORS</h1>
         </div>
         <div class="header-right">
             <nav>
-                <ul>
+                <ul class="navigation-menu">
                     <li><a href="index.html" data-key="home">Головна</a></li>
                     <li><a href="members.html" data-key="members">Учасники</a></li>
                     <li><a href="gallery.html" data-key="gallery">Галерея</a></li>
@@ -36,25 +36,27 @@
 
         <section class="music-release-section">
             <h3 class="album-announcement" data-key="album-announcement">Скоро виходить альбом HOPEKILLER!</h3>
+            
             <div class="album-art-container">
-                <img src="images/album_placeholder.jpg" alt="Album Cover Placeholder" id="album-photo">
+                <img id="album-photo" src="https://placehold.co/400x400/333333/FFFFFF?text=Album+Art" alt="Album Art Placeholder">
             </div>
+
             <div class="countdown-container">
                 <div class="countdown-item">
                     <span id="days">00</span>
-                    <span class="countdown-label" data-key="countdown-days">Дні</span>
+                    <div class="countdown-label" data-key="countdown-days">Дні</div>
                 </div>
                 <div class="countdown-item">
                     <span id="hours">00</span>
-                    <span class="countdown-label" data-key="countdown-hours">Години</span>
+                    <div class="countdown-label" data-key="countdown-hours">Години</div>
                 </div>
                 <div class="countdown-item">
                     <span id="minutes">00</span>
-                    <span class="countdown-label" data-key="countdown-minutes">Хвилини</span>
+                    <div class="countdown-label" data-key="countdown-minutes">Хвилини</div>
                 </div>
-                <div class="countdown-item">
+                <div class="countdown-item" id="seconds-countdown-item"> <!-- Added ID for targeting -->
                     <span id="seconds">00</span>
-                    <span class="countdown-label" data-key="countdown-seconds">Секунди</span>
+                    <div class="countdown-label" data-key="countdown-seconds">Секунди</div>
                 </div>
             </div>
         </section>

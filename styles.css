@@ -186,7 +186,6 @@ header .logo h1::after {
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
-    /* white-space: nowrap; видалено, щоб дозволити перенесення тексту */
     text-align: center; /* Центруємо перенесений текст */
     max-width: 180px; /* Обмежуємо ширину, щоб уникнути виходу за межі екрану */
     opacity: 0;
@@ -196,8 +195,8 @@ header .logo h1::after {
     font-size: 0.5em; /* Трохи менший шрифт */
     font-weight: 700;
     text-shadow: none; /* Видаляємо тінь, щоб текст був чіткішим */
-    border: 1px solid #ff3333;
-    box-shadow: 0 0 10px rgba(230, 0, 0, 0.7);
+    border: none; /* ВИДАЛЕНО РАМКУ */
+    box-shadow: none; /* ВИДАЛЕНО ТІНЬ */
 }
 
 header .logo h1:hover::after {
@@ -537,39 +536,45 @@ main section p {
 
 .countdown-container {
     display: flex;
-    justify-content: center;
-    gap: 25px; /* Простір між елементами таймера */
-    flex-wrap: wrap;
+    justify-content: space-around; /* Розподіляє елементи рівномірно */
+    gap: 10px; /* Зменшений простір між елементами */
+    flex-wrap: nowrap; /* Запобігає переносу на новий рядок */
     background-color: #3a3a3a; /* Темніший фон */
     border-radius: 10px;
-    padding: 25px;
+    padding: 15px 10px; /* Зменшені відступи */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border: 2px solid #e60000; /* Червона рамка */
-    width: 95%; /* Трохи менше ширини */
+    width: 100%; /* Повна ширина батьківського елемента */
     max-width: 700px;
+    overflow-x: auto; /* Дозволяє горизонтальну прокрутку, якщо абсолютно необхідно */
 }
 
 .countdown-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 80px; /* Мінімальна ширина для кращого вигляду */
+    min-width: unset; /* Видалено мінімальну ширину для гнучкості */
+    flex-grow: 1; /* Дозволяє елементам розширюватися */
+    flex-shrink: 1; /* Дозволяє елементам стискатися */
+    padding: 0 5px; /* Горизонтальний відступ всередині елементів */
 }
 
 .countdown-item span {
     font-family: 'Exo 2', sans-serif;
-    font-size: 3.5em; /* Великий розмір для чисел */
+    font-size: 2.5em; /* Зменшений базовий розмір */
     font-weight: 800;
-    color: #e60000; /* Червоний колір чисел */
+    color: #e60000;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    white-space: nowrap; /* Запобігає розриву чисел */
 }
 
 .countdown-label {
     font-family: 'Lato', sans-serif;
-    font-size: 1.1em;
+    font-size: 0.9em; /* Зменшений базовий розмір */
     color: #cccccc;
     margin-top: 5px;
     text-transform: uppercase;
+    white-space: nowrap; /* Запобігає розриву міток */
 }
 
 

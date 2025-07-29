@@ -272,7 +272,7 @@ nav ul li a.active {
 body.home .hero {
     text-align: center;
     padding: 80px 20px; /* Більший відступ */
-    background-image: url('https://placehold.co/1000x600/000000/FFD700?text=Skulls+Background'); /* Фон з черепами */
+    background-image: url('images/cherep.png'); /* Фон з черепами */
     background-size: cover;
     background-position: center;
     background-repeat: repeat; /* Повторення зображення */

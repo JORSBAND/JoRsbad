@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'instagram-group': 'Група',
             'instagram-david': 'Давид',
             'instagram-oleksandr': 'Олександр',
-            'instagram-orest': 'Орест',
-            'instagram-yaroslav': 'Ярослав',
+            'instagram-yaroslav': 'Ярослав', // Видалено 'instagram-orest'
             'privacy-title': 'Політика конфіденційності',
             'privacy-subtitle': 'Ми піклуємося про вашу приватність та збереження ваших даних.',
             'privacy-heading1': 'Збір і використання даних',
@@ -41,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
             'footer-text': '&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a>',
             'band-info-oleksandr': 'Олександр — ритм-гітарист, співзасновник гурту. Його рифи створюють міцний фундамент для нашого звучання.',
             'band-info-david': 'Давид — соло-гітарист та один із засновників. Його віртуозні соло прорізають простір, даруючи незабутні емоції.',
-            'band-info-yaroslav': 'Ярослав — наш потужний барабанщик. Його енергійні ритми тримають увесь гурт і заряджають публіку.',
-            'band-info-orest': 'Орест — басист, чиї глибокі та насичені басові лінії додають потужності та об\'єму нашій музиці.'
+            'band-info-yaroslav': 'Ярослав — наш потужний барабанщик. Його енергійні ритми тримають увесь гурт і заряджають публіку.'
+            // Видалено 'band-info-orest'
         },
         'en': {
             'home': 'Home',
@@ -69,8 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'instagram-group': 'Group',
             'instagram-david': 'David',
             'instagram-oleksandr': 'Oleksandr',
-            'instagram-orest': 'Orest',
-            'instagram-yaroslav': 'Yaroslav',
+            'instagram-yaroslav': 'Yaroslav', // Видалено 'instagram-orest'
             'privacy-title': 'Privacy Policy',
             'privacy-subtitle': 'We care about your privacy and data security.',
             'privacy-heading1': 'Data Collection and Use',
@@ -84,8 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
             'footer-text': '&copy; 2025 JORS Band. All rights reserved. | <a href="privacy.html">Privacy Policy</a>',
             'band-info-oleksandr': 'Oleksandr is the rhythm guitarist and co-founder. His riffs provide a solid foundation for our sound.',
             'band-info-david': 'David is the lead guitarist and one of the founders. His virtuosic solos cut through the air, delivering unforgettable emotions.',
-            'band-info-yaroslav': 'Yaroslav is our powerful drummer. His energetic rhythms hold the whole band together and electrify the audience.',
-            'band-info-orest': 'Orest is the bassist, whose deep and rich bass lines add power and volume to our music.'
+            'band-info-yaroslav': 'Yaroslav is our powerful drummer. His energetic rhythms hold the whole band together and electrify the audience.'
+            // Видалено 'band-info-orest'
         }
     };
 
@@ -101,8 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const bandImages = [
         { src: "images/bandor.jpg", id: "oleksandr" }, // Олександр - ритм-гітарист
         { src: "images/bandd.jpg", id: "david" },      // Давид - соло-гітарист
-        { src: "images/bandy.jpg", id: "yaroslav" },   // Ярослав - барабанщик
-        { src: "images/bando.jpg", id: "orest" }       // Орест - басист
+        { src: "images/bandy.jpg", id: "yaroslav" }    // Ярослав - барабанщик
+        // Видалено { src: "images/bando.jpg", id: "orest" }
     ];
 
     // Функція для встановлення мови
@@ -134,6 +132,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (currentBandMember) {
                 bandInfoTextElement.textContent = translations[lang][`band-info-${currentBandMember.id}`];
             } else {
+                // Якщо поточний учасник був Орестом, повертаємось до першого учасника
+                if (!bandImages.some(member => bandImageElement.src.includes(member.src))) {
+                     bandImageElement.src = bandImages[0].src;
+                     bandInfoTextElement.textContent = translations[lang][`band-info-${bandImages[0].id}`];
+                }
                 console.warn("Could not find current band member for translation. Image src:", bandImageElement.src);
             }
         }
@@ -294,6 +297,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        // Перевіряємо, чи поточне зображення не є видаленим (bando.jpg)
+        // Якщо так, переходимо до першого елемента
+        if (bandImageElement.src.includes("bando.jpg")) {
+            currentIndex = 0;
+        }
         updateCarousel(); // Initial call to set the first member's info
     }
 

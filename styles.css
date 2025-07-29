@@ -16,146 +16,6 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease; /* Плавний перехід для теми */
 }
 
-/* Світла тема (тепер чорно-жовта) */
-body.light-theme {
-    background-color: #FFD700; /* Золотисто-жовтий фон */
-    color: #111111; /* Дуже темний текст */
-}
-
-body.light-theme header {
-    background-color: #FFC400; /* Світліший жовтий для шапки */
-    border-bottom-color: #000000; /* Чорна лінія */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
-body.light-theme header .logo h1 {
-    color: #FFD700; /* Золотисто-жовтий колір */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-body.light-theme header .logo h1::after {
-    background-color: #FFD700; /* Золотисто-жовтий фон */
-    color: #000000; /* Чорний текст */
-    border-color: #333333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-body.light-theme nav ul li a {
-    color: #000000; /* Чорний для посилань */
-}
-
-body.light-theme nav ul li a:hover,
-body.light-theme nav ul li a.active {
-    color: #333333; /* Темніший сірий при наведенні/активний */
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-body.light-theme .lang-toggle-btn,
-body.light-theme #theme-toggle-btn { /* Застосовуємо до обох кнопок */
-    background-color: #FFD700; /* Золотисто-жовтий фон */
-    color: #000000; /* Чорний текст */
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-}
-
-body.light-theme .lang-toggle-btn:hover,
-body.light-theme #theme-toggle-btn:hover { /* Застосовуємо до обох кнопок */
-    background-color: #E0B800; /* Темніший жовтий при наведенні */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-body.light-theme main section {
-    background-color: #000000; /* Чорний фон для секцій */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid #333333;
-}
-
-body.light-theme main section h2 {
-    color: #FFD700; /* Золотисто-жовтий */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-body.light-theme main section p {
-    color: #FFEF80; /* Світліший жовтий текст */
-}
-
-body.light-theme .band-carousel .band-info {
-    background-color: #000000; /* Чорний фон для інформації про учасника */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #333333;
-}
-
-body.light-theme .band-carousel .band-info p {
-    color: #FFD700; /* Золотисто-жовтий */
-}
-
-body.light-theme footer {
-    background-color: #FFC400;
-    color: #000000; /* Чорний */
-    border-top-color: #000000;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
-}
-
-body.light-theme footer a {
-    color: #000000;
-}
-
-body.light-theme footer a:hover {
-    color: #333333;
-}
-
-body.light-theme .social-links-grid p {
-    background-color: #000000; /* Чорний */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-body.light-theme .social-links-grid p a {
-    color: #FFD700; /* Золотисто-жовтий */
-}
-
-/* Світла тема для музичної секції */
-body.light-theme .music-release-section {
-    background-color: #000000; /* Чорний */
-    border-color: #FFD700; /* Золотисто-жовтий */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-body.light-theme .album-announcement {
-    color: #FFD700; /* Золотисто-жовтий */
-}
-
-body.light-theme .countdown-container {
-    background-color: #333333; /* Темніший сірий */
-    border-color: #FFD700; /* Золотисто-жовтий */
-}
-
-body.light-theme .countdown-item span {
-    color: #FFD700; /* Золотисто-жовтий */
-}
-
-body.light-theme .countdown-label {
-    color: #FFEF80; /* Світліший жовтий */
-}
-
-/* Анімація переходу зображень (fade-in/fade-out) */
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.fade-out {
-    animation: fadeOut 0.3s forwards; /* 0.3s має відповідати setTimeout у JS */
-}
-
-.fade-in {
-    animation: fadeIn 0.3s forwards; /* 0.3s має відповідати setTimeout у JS */
-}
-
-
 /* Шапка сайту */
 header {
     display: flex;
@@ -292,11 +152,6 @@ body.home .hero {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); /* Темніша тінь для тексту */
 }
 
-/* Фон для світлої теми на головній сторінці */
-body.light-theme.home .hero {
-    background-image: url('images/cherepw.png'); /* Фон з білими черепами */
-}
-
 body.home .hero::before {
     content: '';
     position: absolute;
@@ -307,12 +162,6 @@ body.home .hero::before {
     background: rgba(0, 0, 0, 0.6); /* Напівпрозорий темний шар для кращої читабельності тексту */
     z-index: -1;
 }
-
-/* Для світлої теми на головній сторінці, шар повинен бути світлішим */
-body.light-theme.home .hero::before {
-    background: rgba(255, 255, 255, 0.6); /* Напівпрозорий світлий шар */
-}
-
 
 body.home .band-image {
     position: relative;
@@ -866,11 +715,6 @@ footer a:hover {
         opacity: 0;
         z-index: 98; /* Під елементами шапки */
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тінь для виїжджаючого меню */
-    }
-
-    /* Фон меню для світлої теми */
-    body.light-theme nav {
-        background-color: #FFC400;
     }
 
     /* Навігаційне меню: стан "відкрито" */

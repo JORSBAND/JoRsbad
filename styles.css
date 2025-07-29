@@ -11,66 +11,66 @@
 /* Основний стиль тіла */
 body {
     font-family: 'Lato', sans-serif; /* Новий шрифт для основного тексту */
-    background-color: #1a1a1a; /* Дуже темний фон */
-    color: #f5f5f5; /* Світлий текст */
+    background-color: #111111; /* Дуже темний фон (майже чорний) */
+    color: #FFD700; /* Золотисто-жовтий текст */
     transition: background-color 0.5s ease, color 0.5s ease; /* Плавний перехід для теми */
 }
 
-/* Світла тема */
+/* Світла тема (тепер чорно-жовта) */
 body.light-theme {
-    background-color: #f5f5f5; /* Світлий фон */
-    color: #1a1a1a; /* Темний текст */
+    background-color: #FFD700; /* Золотисто-жовтий фон */
+    color: #111111; /* Дуже темний текст */
 }
 
 body.light-theme header {
-    background-color: #e0e0e0; /* Світліший сірий для шапки */
-    border-bottom-color: #cc0000; /* Червона лінія */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #FFC400; /* Світліший жовтий для шапки */
+    border-bottom-color: #000000; /* Чорна лінія */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 body.light-theme header .logo h1 {
-    color: #cc0000; /* Червоний колір */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    color: #000000; /* Чорний колір */
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
 }
 
 body.light-theme header .logo h1::after {
-    background-color: #cc0000;
-    border-color: #ff3333;
-    box-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
+    background-color: #000000;
+    border-color: #333333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 body.light-theme nav ul li a {
-    color: #444444; /* Темніший сірий для посилань */
+    color: #333333; /* Темніший сірий для посилань */
 }
 
 body.light-theme nav ul li a:hover,
 body.light-theme nav ul li a.active {
-    color: #cc0000; /* Червоний при наведенні/активний */
-    text-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
+    color: #000000; /* Чорний при наведенні/активний */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 body.light-theme .lang-toggle-btn,
 body.light-theme #theme-toggle-btn { /* Застосовуємо до обох кнопок */
-    background-color: #cc0000;
-    color: #fff;
-    box-shadow: 0 0 8px rgba(204, 0, 0, 0.3);
+    background-color: #000000;
+    color: #FFD700;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
 body.light-theme .lang-toggle-btn:hover,
 body.light-theme #theme-toggle-btn:hover { /* Застосовуємо до обох кнопок */
-    background-color: #990000;
-    box-shadow: 0 0 15px rgba(204, 0, 0, 0.5);
+    background-color: #333333;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 body.light-theme main section {
-    background-color: #ffffff; /* Білий фон для секцій */
+    background-color: #FFFFFF; /* Білий фон для секцій, щоб виділити */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid #dddddd;
+    border: 1px solid #DDDDDD;
 }
 
 body.light-theme main section h2 {
-    color: #cc0000;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    color: #000000;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.2);
 }
 
 body.light-theme main section p {
@@ -78,9 +78,9 @@ body.light-theme main section p {
 }
 
 body.light-theme .band-carousel .band-info {
-    background-color: #f0f0f0; /* Світліший фон для інформації про учасника */
+    background-color: #FFEF80; /* Світліший жовтий фон для інформації про учасника */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #cccccc;
+    border: 1px solid #CCCCCC;
 }
 
 body.light-theme .band-carousel .band-info p {
@@ -88,43 +88,43 @@ body.light-theme .band-carousel .band-info p {
 }
 
 body.light-theme footer {
-    background-color: #e0e0e0;
-    color: #444444;
-    border-top-color: #cc0000;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #FFC400;
+    color: #333333;
+    border-top-color: #000000;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
 }
 
 body.light-theme footer a {
-    color: #cc0000;
+    color: #000000;
 }
 
 body.light-theme footer a:hover {
-    color: #990000;
+    color: #333333;
 }
 
 body.light-theme .social-links-grid p {
-    background-color: #e0e0e0;
+    background-color: #FFEF80;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Світла тема для музичної секції */
-body.light-theme .music-release-section { /* Змінено селектор */
-    background-color: #e8e8e8;
-    border-color: #cc0000;
-    box-shadow: 0 0 20px rgba(204, 0, 0, 0.3);
+body.light-theme .music-release-section {
+    background-color: #FFEF80;
+    border-color: #000000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 body.light-theme .album-announcement {
-    color: #cc0000;
+    color: #000000;
 }
 
 body.light-theme .countdown-container {
-    background-color: #d0d0d0;
-    border-color: #cc0000;
+    background-color: #FFC400;
+    border-color: #000000;
 }
 
 body.light-theme .countdown-item span {
-    color: #cc0000;
+    color: #000000;
 }
 
 body.light-theme .countdown-label {
@@ -157,16 +157,16 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px; /* Збільшений відступ */
-    background-color: #2a2a2a; /* Темніший сірий для шапки */
-    border-bottom: 2px solid #e60000; /* Червона лінія знизу */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Виразна тінь */
+    background-color: #000000; /* Чорний для шапки */
+    border-bottom: 2px solid #FFD700; /* Золотисто-жовта лінія знизу */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Виразна тінь */
     flex-wrap: nowrap; /* Запобігаємо перенесенню елементів в шапці на один рядок */
     position: relative; /* Для абсолютного позиціонування мобільної навігації */
 }
 
 header .logo h1 {
     font-family: 'Exo 2', sans-serif; /* Агресивний шрифт для логотипу */
-    color: #e60000; /* Червоний колір */
+    color: #FFD700; /* Золотисто-жовтий колір */
     font-size: 2.8em; /* Збільшений розмір */
     font-weight: 800; /* Дуже жирний */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Тінь для тексту */
@@ -182,8 +182,8 @@ header .logo h1::after {
     top: 100%; /* Розміщуємо під текстом JORS */
     left: 50%;
     transform: translateX(-50%);
-    background-color: #e60000; /* Червоний фон */
-    color: #fff;
+    background-color: #FFD700; /* Золотисто-жовтий фон */
+    color: #000000; /* Чорний текст */
     padding: 5px 10px;
     border-radius: 5px;
     text-align: center; /* Центруємо перенесений текст */
@@ -229,7 +229,7 @@ nav ul li {
 
 nav ul li a {
     font-family: 'Exo 2', sans-serif; /* Агресивний шрифт для навігації */
-    color: #cccccc; /* Світліший сірий */
+    color: #FFD700; /* Золотисто-жовтий */
     text-decoration: none;
     font-size: 1.3em; /* Збільшений розмір */
     text-transform: uppercase;
@@ -241,16 +241,16 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: #e60000; /* Червоний при наведенні/активний */
-    text-shadow: 0 0 10px #e60000; /* Ефект світіння */
+    color: #FFFF00; /* Яскравіший жовтий при наведенні/активний */
+    text-shadow: 0 0 10px #FFFF00; /* Ефект світіння */
     transform: translateY(-3px); /* Невеликий підйом */
 }
 
 /* Кнопка перемикання мови */
 .lang-toggle-btn, #theme-toggle-btn { /* Об'єднано стилі для обох кнопок */
     font-family: 'Exo 2', sans-serif;
-    background-color: #e60000; /* Червоний фон */
-    color: #fff;
+    background-color: #FFD700; /* Золотисто-жовтий фон */
+    color: #000000; /* Чорний текст */
     border: none;
     padding: 10px 15px; /* Збільшений розмір кнопки */
     font-size: 1.1em;
@@ -258,25 +258,25 @@ nav ul li a.active {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-    box-shadow: 0 0 8px rgba(230, 0, 0, 0.5); /* Червоне світіння */
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5); /* Золотисто-жовте світіння */
     z-index: 100;
 }
 
 .lang-toggle-btn:hover, #theme-toggle-btn:hover { /* Об'єднано стилі для обох кнопок */
-    background-color: #cc0000; /* Темніший червоний при наведенні */
+    background-color: #E0B800; /* Темніший жовтий при наведенні */
     transform: translateY(-3px); /* Невеликий підйом */
-    box-shadow: 0 0 15px rgba(230, 0, 0, 0.8); /* Сильніше світіння */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* Сильніше світіння */
 }
 
 /* Розділ Hero для Головної сторінки */
 body.home .hero {
     text-align: center;
     padding: 80px 20px; /* Більший відступ */
-    background-image: url('https://placehold.co/1000x600/1a1a1a/f5f5f5?text=Skulls+Background'); /* Фон з черепами */
+    background-image: url('https://placehold.co/1000x600/000000/FFD700?text=Skulls+Background'); /* Фон з черепами */
     background-size: cover;
     background-position: center;
     background-repeat: repeat; /* Повторення зображення */
-    color: #f5f5f5;
+    color: #FFD700; /* Золотисто-жовтий текст */
     position: relative;
     z-index: 1;
     min-height: 500px; /* Мінімальна висота для більшого впливу */
@@ -336,7 +336,7 @@ body.home .band-image:hover img {
 body.home .hero h2 {
     font-family: 'Exo 2', sans-serif;
     font-size: 3.5em; /* Більший розмір шрифту */
-    color: #e60000;
+    color: #FFD700; /* Золотисто-жовтий */
     margin-bottom: 15px;
     letter-spacing: 2px; /* Розрядка */
 }
@@ -344,7 +344,7 @@ body.home .hero h2 {
 body.home .hero p {
     font-family: 'Lato', sans-serif;
     font-size: 1.3em;
-    color: #cccccc;
+    color: #FFEF80; /* Світліший жовтий */
 }
 
 /* Секції основного контенту */
@@ -352,7 +352,7 @@ main section {
     padding: 50px 30px; /* Більший відступ */
     margin: 40px auto; /* Збільшений зовнішній відступ */
     max-width: 1100px; /* Змінена максимальна ширина */
-    background-color: #222222; /* Темніший сірий фон */
+    background-color: #000000; /* Чорний фон */
     border-radius: 10px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7); /* Більш виразна тінь */
     border: 1px solid #333333; /* Тонка рамка */
@@ -361,7 +361,7 @@ main section {
 main section h2 {
     font-family: 'Exo 2', sans-serif;
     text-align: center;
-    color: #e60000;
+    color: #FFD700; /* Золотисто-жовтий */
     margin-bottom: 30px; /* Більший відступ */
     font-size: 3em;
     letter-spacing: 1.5px;
@@ -373,7 +373,7 @@ main section p {
     text-align: center;
     font-size: 1.15em;
     line-height: 1.7;
-    color: #e0e0e0; /* Трохи світліший колір тексту */
+    color: #FFEF80; /* Світліший жовтий колір тексту */
 }
 
 /* Карусель учасників */
@@ -398,23 +398,23 @@ main section p {
     max-height: 600px; /* Збільшена максимальна висота, відповідає галереї */
     border-radius: 10px; /* Злегка заокруглені кути */
     object-fit: cover;
-    box-shadow: 0 0 15px rgba(230, 0, 0, 0.6); /* Червоне світіння */
-    border: 2px solid #e60000; /* Червона рамка */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); /* Золотисто-жовте світіння */
+    border: 2px solid #FFD700; /* Золотисто-жовта рамка */
 }
 
 .band-info {
     flex: 1; /* Займає меншу частину ширини */
     padding: 30px; /* Більший відступ */
-    background-color: #3a3a3a; /* Темніший фон */
+    background-color: #333333; /* Темніший сірий фон */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    border: 1px solid #444; /* Тонка рамка */
+    border: 1px solid #555555; /* Тонка рамка */
 }
 
 .band-info p {
     font-family: 'Lato', sans-serif;
     font-size: 1.25em; /* Більший розмір шрифту */
-    color: #f5f5f5;
+    color: #FFEF80; /* Світліший жовтий */
     margin: 0;
     text-align: left; /* Вирівнюємо по лівому краю */
     line-height: 1.8;
@@ -426,8 +426,8 @@ main section p {
     top: 50%; /* Глобальна установка, буде перевизначена в медіазапитах */
     transform: translateY(-50%); /* Глобальна установка, буде перевизначена в медіазапитах */
     background: transparent; /* Мінімалістичний: прозорий фон */
-    color: #e60000; /* Червоний колір стрілок */
-    border: 2px solid #e60000; /* Товста червона рамка */
+    color: #FFD700; /* Золотисто-жовтий колір стрілок */
+    border: 2px solid #FFD700; /* Товста золотисто-жовта рамка */
     padding: 10px 15px; /* Зменшений розмір для мінімалізму */
     font-size: 1.5em; /* Розмір стрілок */
     border-radius: 50%;
@@ -441,11 +441,11 @@ main section p {
 }
 
 .control-button:hover {
-    background-color: rgba(230, 0, 0, 0.2); /* Легкий червоний фон при наведенні */
-    color: #fff; /* Білі стрілки при наведенні */
-    border-color: #ff3333; /* Яскравіша рамка при наведенні */
+    background-color: rgba(255, 215, 0, 0.2); /* Легкий жовтий фон при наведенні */
+    color: #000000; /* Чорні стрілки при наведенні */
+    border-color: #FFFF00; /* Яскравіша рамка при наведенні */
     transform: translateY(-50%) scale(1.1); /* Невелике збільшення */
-    box-shadow: 0 0 15px rgba(230, 0, 0, 0.8); /* Світіння */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* Світіння */
     opacity: 1; /* Повна непрозорість */
 }
 
@@ -466,8 +466,8 @@ main section p {
     width: 90%;
     max-width: 900px; /* Більша максимальна ширина */
     margin: 30px auto;
-    border: 3px solid #e60000; /* Червона рамка */
-    box-shadow: 0 0 20px rgba(230, 0, 0, 0.7); /* Червоне світіння */
+    border: 3px solid #FFD700; /* Золотисто-жовта рамка */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); /* Золотисто-жовте світіння */
     border-radius: 10px;
     overflow: hidden;
 }
@@ -495,7 +495,7 @@ main section p {
     text-align: center; /* Центруємо текст всередині */
     gap: 30px; /* Відступ між елементами */
     padding: 40px 20px;
-    background-color: #222222; /* Темніший сірий фон */
+    background-color: #000000; /* Чорний фон */
     border-radius: 10px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
     border: 1px solid #333333;
@@ -506,7 +506,7 @@ main section p {
 .album-announcement {
     font-family: 'Exo 2', sans-serif;
     font-size: 2.5em;
-    color: #e60000;
+    color: #FFD700; /* Золотисто-жовтий */
     text-align: center;
     margin-bottom: 20px;
     letter-spacing: 1.5px;
@@ -518,8 +518,8 @@ main section p {
     max-width: 400px; /* Максимальна ширина для обкладинки */
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 0 25px rgba(230, 0, 0, 0.8); /* Яскраве червоне світіння */
-    border: 3px solid #e60000; /* Червона рамка */
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8); /* Яскраве золотисто-жовте світіння */
+    border: 3px solid #FFD700; /* Золотисто-жовта рамка */
     margin-bottom: 30px;
 }
 
@@ -540,11 +540,11 @@ main section p {
     justify-content: space-around; /* Розподіляє елементи рівномірно */
     gap: 5px; /* Ще більше зменшений простір між елементами */
     flex-wrap: nowrap; /* Запобігає переносу на новий рядок */
-    background-color: #3a3a3a; /* Темніший фон */
+    background-color: #333333; /* Темніший сірий фон */
     border-radius: 10px;
     padding: 10px 5px; /* Ще більше зменшені відступи */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    border: 2px solid #e60000; /* Червона рамка */
+    border: 2px solid #FFD700; /* Золотисто-жовта рамка */
     width: 100%; /* Повна ширина батьківського елемента */
     max-width: 700px;
     overflow-x: auto; /* Дозволяє горизонтальну прокрутку, якщо абсолютно необхідно */
@@ -564,7 +564,7 @@ main section p {
     font-family: 'Exo 2', sans-serif;
     font-size: 2em; /* Зменшений розмір для чисел */
     font-weight: 800;
-    color: #e60000;
+    color: #FFD700; /* Золотисто-жовтий */
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
     white-space: nowrap; /* Запобігає розриву чисел */
 }
@@ -572,7 +572,7 @@ main section p {
 .countdown-label {
     font-family: 'Lato', sans-serif;
     font-size: 0.8em; /* Зменшений розмір для міток */
-    color: #cccccc;
+    color: #FFEF80; /* Світліший жовтий */
     margin-top: 3px; /* Зменшений відступ зверху */
     text-transform: uppercase;
     white-space: nowrap; /* Запобігає розриву міток */
@@ -589,9 +589,9 @@ main section p {
 .privacy-content abbr {
     position: relative;
     text-decoration: none; /* Видаляємо стандартне підкреслення */
-    border-bottom: 1px dotted #e60000; /* Додаємо пунктирне підкреслення */
+    border-bottom: 1px dotted #FFD700; /* Додаємо пунктирне підкреслення */
     cursor: help; /* Змінюємо курсор на знак питання */
-    color: #e60000; /* Виділяємо слово кольором */
+    color: #FFD700; /* Виділяємо слово кольором */
 }
 
 .privacy-content abbr::after {
@@ -600,8 +600,8 @@ main section p {
     left: 50%;
     bottom: 120%; /* Розміщуємо вище слова */
     transform: translateX(-50%);
-    background-color: #e60000; /* Колір фону підказки */
-    color: #fff;
+    background-color: #FFD700; /* Колір фону підказки */
+    color: #000000; /* Чорний текст */
     padding: 8px 12px;
     border-radius: 5px;
     white-space: nowrap; /* Запобігаємо перенесенню тексту */
@@ -611,8 +611,8 @@ main section p {
     z-index: 99;
     font-size: 0.9em; /* Трохи менший шрифт для підказки */
     text-shadow: none; /* Видаляємо тінь, якщо є */
-    border: 1px solid #ff3333;
-    box-shadow: 0 0 10px rgba(230, 0, 0, 0.7);
+    border: 1px solid #FFFF00;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
 }
 
 .privacy-content abbr:hover::after {
@@ -623,7 +623,7 @@ main section p {
 
 .privacy-content h3, .contact-info h2 {
     font-family: 'Exo 2', sans-serif;
-    color: #e60000;
+    color: #FFD700; /* Золотисто-жовтий */
     margin-top: 25px;
     margin-bottom: 15px;
     font-size: 2em;
@@ -635,18 +635,18 @@ main section p {
     font-size: 1.15em;
     line-height: 1.7;
     margin-bottom: 15px;
-    color: #e0e0e0;
+    color: #FFEF80; /* Світліший жовтий */
 }
 
 .privacy-content a, .contact-info a {
-    color: #e60000;
+    color: #FFD700; /* Золотисто-жовтий */
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s, text-decoration 0.3s;
 }
 
 .privacy-content a:hover {
-    color: #ff3333;
+    color: #FFFF00; /* Яскравіший жовтий */
     text-decoration: underline;
 }
 
@@ -654,10 +654,10 @@ main section p {
 footer {
     text-align: center;
     padding: 25px;
-    background-color: #2a2a2a;
-    color: #cccccc;
+    background-color: #000000; /* Чорний */
+    color: #FFD700; /* Золотисто-жовтий */
     margin-top: 60px; /* Більший відступ */
-    border-top: 2px solid #e60000; /* Червона лінія зверху */
+    border-top: 2px solid #FFD700; /* Золотисто-жовта лінія зверху */
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5); /* Тінь */
 }
 
@@ -667,14 +667,14 @@ footer p {
 }
 
 footer a {
-    color: #e60000;
+    color: #FFD700; /* Золотисто-жовтий */
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s, text-decoration 0.3s;
 }
 
 footer a:hover {
-    color: #ff3333;
+    color: #FFFF00; /* Яскравіший жовтий */
     text-decoration: underline;
 }
 
@@ -692,7 +692,7 @@ footer a:hover {
     text-align: left; /* Вирівнюємо текст по лівому краю всередині кожного елемента */
     margin: 0; /* Прибираємо стандартний відступ від параграфів */
     padding: 10px;
-    background-color: #2a2a2a; /* Темніший фон для кожного посилання */
+    background-color: #333333; /* Темніший сірий фон для кожного посилання */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     width: 100%; /* Займає всю ширину колонки */
@@ -702,13 +702,13 @@ footer a:hover {
 .social-links-grid p a {
     display: inline; /* Щоб посилання займало лише необхідний простір */
     font-weight: normal; /* Звичайний жирність */
-    color: #00bfff; /* Блакитний колір для посилань */
+    color: #FFD700; /* Золотисто-жовтий колір для посилань */
     text-decoration: none;
     transition: color 0.3s, text-decoration 0.3s;
 }
 
 .social-links-grid p a:hover {
-    color: #00a0e6; /* Темніший блакитний при наведенні */
+    color: #FFFF00; /* Яскравіший жовтий при наведенні */
     text-decoration: underline;
 }
 
@@ -831,7 +831,7 @@ footer a:hover {
         font-size: 2em;
         background: none;
         border: none;
-        color: #e60000;
+        color: #FFD700; /* Золотисто-жовтий */
         cursor: pointer;
         padding: 5px 10px;
         align-self: center;
@@ -845,7 +845,7 @@ footer a:hover {
         width: 100%;
         max-height: 0; /* Висота 0 для анімації */
         overflow: hidden;
-        background-color: #2a2a2a; /* Фон меню */
+        background-color: #000000; /* Чорний фон меню */
         transition: max-height 0.5s ease-out, left 0.5s ease-out, opacity 0.5s ease-out; /* Плавна анімація */
         opacity: 0;
         z-index: 98; /* Під елементами шапки */
@@ -854,7 +854,7 @@ footer a:hover {
 
     /* Фон меню для світлої теми */
     body.light-theme nav {
-        background-color: #e0e0e0;
+        background-color: #FFC400;
     }
 
     /* Навігаційне меню: стан "відкрито" */

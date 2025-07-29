@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'instagram-group': 'Група',
             'instagram-david': 'Давид',
             'instagram-oleksandr': 'Олександр',
-            'instagram-yaroslav': 'Ярослав', // Видалено 'instagram-orest'
+            'instagram-yaroslav': 'Ярослав',
             'privacy-title': 'Політика конфіденційності',
             'privacy-subtitle': 'Ми піклуємося про вашу приватність та збереження ваших даних.',
             'privacy-heading1': 'Збір і використання даних',
@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
             'band-info-oleksandr': 'Олександр — ритм-гітарист, співзасновник гурту. Його рифи створюють міцний фундамент для нашого звучання.',
             'band-info-david': 'Давид — соло-гітарист та один із засновників. Його віртуозні соло прорізають простір, даруючи незабутні емоції.',
             'band-info-yaroslav': 'Ярослав — наш потужний барабанщик. Його енергійні ритми тримають увесь гурт і заряджають публіку.'
-            // Видалено 'band-info-orest'
         },
         'en': {
             'home': 'Home',
@@ -68,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'instagram-group': 'Group',
             'instagram-david': 'David',
             'instagram-oleksandr': 'Oleksandr',
-            'instagram-yaroslav': 'Yaroslav', // Видалено 'instagram-orest'
+            'instagram-yaroslav': 'Yaroslav',
             'privacy-title': 'Privacy Policy',
             'privacy-subtitle': 'We care about your privacy and data security.',
             'privacy-heading1': 'Data Collection and Use',
@@ -83,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
             'band-info-oleksandr': 'Oleksandr is the rhythm guitarist and co-founder. His riffs provide a solid foundation for our sound.',
             'band-info-david': 'David is the lead guitarist and one of the founders. His virtuosic solos cut through the air, delivering unforgettable emotions.',
             'band-info-yaroslav': 'Yaroslav is our powerful drummer. His energetic rhythms hold the whole band together and electrify the audience.'
-            // Видалено 'band-info-orest'
         }
     };
 
@@ -100,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { src: "images/bandor.jpg", id: "oleksandr" }, // Олександр - ритм-гітарист
         { src: "images/bandd.jpg", id: "david" },      // Давид - соло-гітарист
         { src: "images/bandy.jpg", id: "yaroslav" }    // Ярослав - барабанщик
-        // Видалено { src: "images/bando.jpg", id: "orest" }
     ];
 
     // Функція для встановлення мови
@@ -157,15 +154,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Функція для встановлення теми
+    // Функція для встановлення теми (світла тема видалена, залишаємо лише "dark" як основну)
     const setTheme = (theme) => {
-        document.body.classList.remove('light-theme', 'dark-theme'); // Видаляємо всі теми
-        document.body.classList.add(`${theme}-theme`); // Додаємо вибрану тему
-        localStorage.setItem('theme', theme); // Зберігаємо обрану тему
-        // Оновлюємо текст на кнопці теми
+        // Оскільки біла тема видалена, ми просто переконаємося, що завжди застосовується "dark" стиль
+        document.body.classList.remove('light-theme'); // Видаляємо будь-які залишки light-theme
+        document.body.classList.add('dark-theme'); // Завжди застосовуємо dark-theme
+        localStorage.setItem('theme', 'dark'); // Зберігаємо тільки "dark"
+        // Оновлюємо текст на кнопці теми (якщо вона все ще існує, хоча її функціонал змінився)
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         if (themeToggleBtn) {
-            themeToggleBtn.textContent = theme === 'dark' ? 'Light' : 'Dark';
+            themeToggleBtn.textContent = 'Dark'; // Завжди показуємо "Dark" або приховуємо кнопку
         }
     };
 
@@ -173,8 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedLang = localStorage.getItem('lang') || 'uk'; // За замовчуванням українська
     setLanguage(savedLang);
 
-    const savedTheme = localStorage.getItem('theme') || 'dark'; // За замовчуванням темна тема
-    setTheme(savedTheme);
+    // Завжди застосовуємо "dark" тему при завантаженні
+    setTheme('dark');
 
 
     // Перемикач мови
@@ -189,14 +187,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Перемикач теми
+    // Перемикач теми (функціонал змінено, тепер просто показує "Dark")
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     if (themeToggleBtn) {
-        themeToggleBtn.textContent = savedTheme === 'dark' ? 'Light' : 'Dark'; // Відображаємо поточну тему
+        themeToggleBtn.textContent = 'Dark'; // Завжди показуємо "Dark"
         themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = localStorage.getItem('theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme);
+            // Оскільки біла тема видалена, ця кнопка більше не перемикає теми
+            // Можливо, її варто приховати або змінити її функціонал
+            console.log("Theme toggle button clicked, but only dark theme is available.");
         });
     }
 

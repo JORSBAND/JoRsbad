@@ -87,17 +87,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Дані для галереї зображень
     const images = [
-        "images/band1.JPG",
-        "images/band2.JPG",
-        "images/band3.JPG",
-        "images/band4.JPG"
+        "images/band1.jpg",
+        "images/band2.jpg",
+        "images/band3.jpg",
+        "images/band4.jpg"
     ];
 
     // Дані для каруселі учасників
     const bandImages = [
-        { src: "images/bandor.jpg", id: "oleksandr" }, // Олександр - ритм-гітарист
-        { src: "images/bandd.jpg", id: "david" },      // Давид - соло-гітарист
-        { src: "images/bandy.jpg", id: "yaroslav" }    // Ярослав - барабанщик
+        { src: "images/bandor.JPG", id: "oleksandr" }, // Олександр - ритм-гітарист
+        { src: "images/bandd.JPG", id: "david" },      // Давид - соло-гітарист
+        { src: "images/bandy.JPG", id: "yaroslav" }    // Ярослав - барабанщик
     ];
 
     // Функція для встановлення мови
@@ -367,4 +367,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lazyImages.forEach(image => imageObserver.observe(image));
 });
+
 

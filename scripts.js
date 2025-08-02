@@ -87,10 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Дані для галереї зображень
     const images = [
-        "images/band1.jpg",
-        "images/band2.jpg",
-        "images/band3.jpg",
-        "images/band4.jpg"
+        "images/band1.JPG",
+        "images/band2.JPG",
+        "images/band3.JPG",
+        "images/band4.JPG"
     ];
 
     // Дані для каруселі учасників
@@ -367,3 +367,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lazyImages.forEach(image => imageObserver.observe(image));
 });
+

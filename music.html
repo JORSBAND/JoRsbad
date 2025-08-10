@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="music-title">Музика</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="scripts.js" defer></script>
 </head>
 <body>
@@ -23,7 +25,6 @@
                 </ul>
             </nav>
             <button id="lang-toggle-btn" class="lang-toggle-btn">UK</button>
-            <button id="theme-toggle-btn" class="lang-toggle-btn">Dark</button>
             <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
         </div>
     </header>
@@ -54,16 +55,44 @@
                     <span id="minutes">00</span>
                     <div class="countdown-label" data-key="countdown-minutes">Хвилини</div>
                 </div>
-                <div class="countdown-item" id="seconds-countdown-item"> <!-- Added ID for targeting -->
+                <div class="countdown-item" id="seconds-countdown-item">
                     <span id="seconds">00</span>
                     <div class="countdown-label" data-key="countdown-seconds">Секунди</div>
                 </div>
             </div>
         </section>
+
+        <section class="events-carousel-section">
+            <h3 class="events-title" data-key="events-title">Найближчі заходи</h3>
+            <div class="events-carousel">
+                <div class="event-slide active-slide">
+                    <div class="event-poster">
+                        <img src="https://placehold.co/400x400/000000/FFA500?text=Poster" alt="Event Poster 1">
+                    </div>
+                    <div class="event-details">
+                        <h4 data-key="event1-title">Стадіон Ювілейний</h4>
+                        <p data-key="event1-date">12.08.2025 о 17:00</p>
+                        <p data-key="event1-entry">Вхід безкоштовний</p>
+                    </div>
+                </div>
+                <div class="event-slide">
+                    <div class="event-poster">
+                        <img src="https://placehold.co/400x400/000000/FFA500?text=Poster" alt="Event Poster 2">
+                    </div>
+                    <div class="event-details">
+                        <h4 data-key="event2-title">BunkerPub</h4>
+                        <p data-key="event2-date">15.08.2025</p>
+                        <p data-key="event2-entry">Потрібна бронь</p>
+                    </div>
+                </div>
+                <button class="prev-event-button control-button">&lt;</button>
+                <button class="next-event-button control-button">&gt;</button>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p data-key="footer-text">&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a></p>
+        <p><span data-key="footer-text">&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a></span> <span id="view-counter-container" style="display: none;"><br><span data-key="views">Переглядів</span>: <span id="view-counter">0</span></span></p>
     </footer>
 </body>
 </html>

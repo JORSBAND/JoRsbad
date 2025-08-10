@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Політика конфіденційності</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="scripts.js" defer></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <h1>JORS</h1> <!-- Змінено з "JORS Метал Гурт" -->
+            <h1>JORS</h1>
         </div>
         <div class="header-right">
             <nav>
-                <ul>
+                <ul class="navigation-menu">
                     <li><a href="index.html" data-key="home">Головна</a></li>
                     <li><a href="members.html" data-key="members">Учасники</a></li>
                     <li><a href="gallery.html" data-key="gallery">Галерея</a></li>
@@ -22,11 +24,7 @@
                     <li><a href="contacts.html" data-key="contacts">Контакти</a></li>
                 </ul>
             </nav>
-            <!-- Кнопка перемикання мови -->
             <button id="lang-toggle-btn" class="lang-toggle-btn">UK</button>
-            <!-- Кнопка перемикання теми -->
-            <button id="theme-toggle-btn" class="lang-toggle-btn">Dark</button>
-            <!-- Кнопка для мобільного меню -->
             <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
         </div>
     </header>
@@ -38,9 +36,8 @@
         </section>
 
         <section class="privacy-content">
-            <!-- Додано тег <abbr> для ефекту наведення курсору -->
             <h3 data-key="privacy-heading1"><abbr title="давид лох">Збір</abbr> і використання даних</h3>
-            <p data-key="privacy-p1">Ми збираємо лише ті дані, які необхідні для забезпечення якісного обслуговування, наприклад, ваші контактні дані, коли ви зв'язуєтесь з нами.</p>
+            <p data-key="privacy-p1">Ми збираємо лише ті дані, які необхідні для забезпечення якісного обслуговування, наприклад, ваші контактні дані, коли ви зв'язуєтесь з нами. Ми також використовуємо Firebase для анонімного підрахунку переглядів сторінок, щоб покращити наш сайт.</p>
 
             <h3 data-key="privacy-heading2">Захист даних</h3>
             <p data-key="privacy-p2">Усі ваші дані зберігаються безпечно та не передаються третім сторонам без вашої згоди.</p>
@@ -54,7 +51,7 @@
     </main>
 
     <footer>
-        <p data-key="footer-text">&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a></p>
+        <p><span data-key="footer-text">&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a></span> <span id="view-counter-container" style="display: none;"><br><span data-key="views">Переглядів</span>: <span id="view-counter">0</span></span></p>
     </footer>
 </body>
 </html>

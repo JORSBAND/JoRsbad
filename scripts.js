@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 db.runTransaction((transaction) => {
                     return transaction.get(pageViewsRef).then((doc) => {
                         let newCount = 1;
-                        if (doc.exists) {
+                        if (doc.exists && doc.data().count) {
                             newCount = doc.data().count + 1;
                         }
                         transaction.set(pageViewsRef, { count: newCount });
@@ -42,89 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             };
             
-            incrementViewCount();
+            if (!document.body.classList.contains('game-page')) {
+                incrementViewCount();
+            }
         } catch (e) {
             console.error("Помилка ініціалізації Firebase. Перевірте конфігурацію.", e);
         }
-    }
-
-
-    // Об'єкт для перекладів
-    const translations = {
-        'uk': {
-            'home': 'Головна',
-            'members': 'Учасники',
-            'gallery': 'Галерея',
-            'music': 'Музика',
-            'contacts': 'Контакти',
-            'game': 'Гра',
-            'hero-title-home': 'Вас вітає JORS Метал Гурт!',
-            'hero-subtitle-home': 'Пориньте у світ музики разом із нами.',
-            'footer-text': '&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a>',
-            'views': 'Переглядів',
-            // Game translations
-            'game-title': 'JORS - Гра',
-            'score': 'Рахунок',
-            'high-score': 'Рекорд',
-            'game-over': 'Гру закінчено',
-            'restart': 'Спробувати ще',
-            'back-to-home': 'На головну'
-        },
-        'en': {
-            'home': 'Home',
-            'members': 'Members',
-            'gallery': 'Gallery',
-            'music': 'Music',
-            'contacts': 'Contacts',
-            'game': 'Game',
-            'hero-title-home': 'Welcome to JORS Metal Band!',
-            'hero-subtitle-home': 'Immerse yourself in the world of music with us.',
-            'footer-text': '&copy; 2025 JORS Band. All rights reserved. | <a href="privacy.html">Privacy Policy</a>',
-            'views': 'Views',
-            // Game translations
-            'game-title': 'JORS - The Game',
-            'score': 'Score',
-            'high-score': 'High Score',
-            'game-over': 'Game Over',
-            'restart': 'Restart',
-            'back-to-home': 'Back to Home'
-        }
-    };
-
-    // Функція для встановлення мови
-    const setLanguage = (lang) => {
-        document.documentElement.lang = lang;
-        localStorage.setItem('lang', lang);
-
-        document.querySelectorAll('[data-key]').forEach(element => {
-            const key = element.getAttribute('data-key');
-            if (translations[lang] && translations[lang][key]) {
-                if (key.includes('footer-text')) {
-                    element.innerHTML = translations[lang][key];
-                } else {
-                    element.textContent = translations[lang][key];
-                }
-            }
-        });
-    };
-
-    const savedLang = localStorage.getItem('lang') || 'uk';
-    setLanguage(savedLang);
-    
-    if(!document.body.classList.contains('game-page')) {
-        document.body.classList.add('dark-theme');
-    }
-
-    // Перемикач мови
-    const langToggleBtn = document.getElementById('lang-toggle-btn');
-    if (langToggleBtn) {
-        langToggleBtn.textContent = savedLang.toUpperCase();
-        langToggleBtn.addEventListener('click', () => {
-            const currentLang = localStorage.getItem('lang') || 'uk';
-            const newLang = currentLang === 'uk' ? 'en' : 'uk';
-            setLanguage(newLang);
-            langToggleBtn.textContent = newLang.toUpperCase();
-        });
     }
 
     // Мобільне меню (гамбургер)
@@ -148,5 +71,38 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             window.location.href = 'game.html';
         });
+    }
+
+    // Карусель учасників - Логіка
+    const bandImageElement = document.getElementById("band-image");
+    if (bandImageElement) {
+        const bandImages = [
+            { src: "images/bandor.JPG", id: "oleksandr" },
+            { src: "images/bandd.JPG", id: "david" },
+            { src: "images/bandy.JPG", id: "yaroslav" }
+        ];
+        let currentIndex = 0;
+        const bandInfoTextElement = document.getElementById("band-info-text");
+
+        const updateCarousel = () => {
+            bandImageElement.src = bandImages[currentIndex].src;
+            // Тут можна додати логіку для перекладу тексту, якщо вона потрібна
+            // bandInfoTextElement.textContent = translations[currentLang][`band-info-${bandImages[currentIndex].id}`];
+        };
+
+        const prevBandButton = document.querySelector(".band-carousel .prev-button");
+        const nextBandButton = document.querySelector(".band-carousel .next-button");
+
+        if (prevBandButton && nextBandButton) {
+            prevBandButton.addEventListener("click", () => {
+                currentIndex = (currentIndex - 1 + bandImages.length) % bandImages.length;
+                updateCarousel();
+            });
+            nextBandButton.addEventListener("click", () => {
+                currentIndex = (currentIndex + 1) % bandImages.length;
+                updateCarousel();
+            });
+        }
+        updateCarousel();
     }
 });

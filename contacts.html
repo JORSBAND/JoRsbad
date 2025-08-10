@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="contacts">Контакти</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="scripts.js" defer></script>
 </head>
 <body>
@@ -23,7 +25,6 @@
                 </ul>
             </nav>
             <button id="lang-toggle-btn" class="lang-toggle-btn">UK</button>
-            <button id="theme-toggle-btn" class="lang-toggle-btn">Dark</button>
             <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
         </div>
     </header>
@@ -44,7 +45,7 @@
     </main>
 
     <footer>
-        <p data-key="footer-text">&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a></p>
+        <p><span data-key="footer-text">&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a></span> <span id="view-counter-container" style="display: none;"><br><span data-key="views">Переглядів</span>: <span id="view-counter">0</span></span></p>
     </footer>
 </body>
 </html>

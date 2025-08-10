@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title data-key="game-title">JORS - Гра</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="game-page">
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div id="game-ui">
+            <div class="score-container">
+                <span data-key="score">Рахунок</span>: <span id="score">0</span>
+            </div>
+            <div class="score-container">
+                <span data-key="high-score">Рекорд</span>: <span id="high-score">0</span>
+            </div>
+        </div>
+        <div id="game-over-screen">
+            <h2 data-key="game-over">Гру закінчено</h2>
+            <button id="restart-btn" data-key="restart">Спробувати ще</button>
+        </div>
+        <a href="index.html" id="back-btn" data-key="back-to-home">На головну</a>
+    </div>
+    <script src="scripts.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

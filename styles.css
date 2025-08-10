@@ -129,6 +129,7 @@ nav ul li a.active {
     box-shadow: 0 0 15px rgba(255, 165, 0, 0.8); /* Сильніше світіння */
 }
 
+/* Розділ Hero для Головної сторінки */
 body.home .hero {
     text-align: center;
     padding: 80px 20px;
@@ -207,6 +208,7 @@ body.home .hero p {
     color: #FFC500; /* Світліший оранжевий */
 }
 
+/* Секції основного контенту */
 main section {
     padding: 50px 30px;
     margin: 40px auto;
@@ -215,6 +217,11 @@ main section {
     border-radius: 10px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
     border: 1px solid #333333;
+}
+
+/* Вирівнювання блоків на сторінці Музика */
+body.music-page main section {
+    max-width: 900px;
 }
 
 main section h2, .events-title {
@@ -258,6 +265,7 @@ main section p {
     object-fit: cover;
     box-shadow: 0 0 15px rgba(255, 165, 0, 0.6); /* Змінено на оранжевий */
     border: 2px solid #FFA500; /* Змінено на оранжевий */
+    aspect-ratio: 1 / 1; /* Робить зображення квадратним */
 }
 
 .band-info {
@@ -306,12 +314,20 @@ main section p {
     opacity: 1;
 }
 
-.carousel .prev-button, .gallery .prev-button, .prev-event-button {
+.carousel .prev-button, .gallery .prev-button {
     left: -25px;
 }
 
-.carousel .next-button, .gallery .next-button, .next-event-button {
+.carousel .next-button, .gallery .next-button {
     right: -25px;
+}
+
+.prev-event-button {
+    left: 10px;
+}
+
+.next-event-button {
+    right: 10px;
 }
 
 .gallery .image-container {
@@ -345,13 +361,6 @@ main section p {
     justify-content: center;
     text-align: center;
     gap: 30px;
-    padding: 40px 20px;
-    background-color: #000000;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-    border: 1px solid #333333;
-    max-width: 900px;
-    margin: 40px auto;
 }
 
 .album-announcement {
@@ -430,13 +439,7 @@ main section p {
 
 /* Секція каруселі подій */
 .events-carousel-section {
-    padding: 50px 30px;
-    margin: 40px auto;
-    max-width: 1100px;
-    background-color: #000000;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-    border: 1px solid #333333;
+    position: relative;
 }
 
 .events-carousel {
@@ -444,6 +447,7 @@ main section p {
     max-width: 800px;
     margin: 0 auto;
     overflow: hidden;
+    padding: 0 50px; /* Додаємо місце для кнопок */
 }
 
 .event-slide {
@@ -639,8 +643,8 @@ footer a:hover {
     .carousel, .band-info { max-width: 90%; }
     .carousel img, .gallery .image-container img { max-height: 350px; }
     .control-button { padding: 8px 12px; font-size: 1.3em; }
-    .carousel .prev-button, .gallery .prev-button, .prev-event-button { left: 10px; right: auto; }
-    .carousel .next-button, .gallery .next-button, .next-event-button { right: 10px; left: auto; }
+    .carousel .prev-button, .gallery .prev-button { left: 10px; right: auto; }
+    .carousel .next-button, .gallery .next-button { right: 10px; left: auto; }
     .music-release-section { max-width: 90%; }
     .album-announcement { font-size: 2em; }
     .countdown-item span { font-size: 2em; }
@@ -670,11 +674,12 @@ footer a:hover {
     main section h2, .events-title { font-size: 2em; }
     main section p { font-size: 1em; }
     .band-carousel { gap: 25px; }
-    .carousel, .gallery .image-container { padding-bottom: 60px; max-height: none; height: auto; }
+    .carousel { padding-bottom: 60px; }
+    .carousel, .gallery .image-container { max-height: none; height: auto; }
     .carousel img, .gallery .image-container img { max-height: 280px; margin-bottom: 10px; }
-    .control-button { padding: 6px 10px; font-size: 1.2em; top: auto; bottom: 10px; transform: none; width: 40px; height: 40px; }
-    .carousel .prev-button, .gallery .prev-button, .prev-event-button { left: 5px; right: auto; }
-    .carousel .next-button, .gallery .next-button, .next-event-button { right: 5px; left: auto; }
+    .control-button { top: auto; bottom: 10px; transform: none; width: 45px; height: 45px; }
+    .carousel .prev-button, .gallery .prev-button { left: 30%; transform: translateX(-50%); }
+    .carousel .next-button, .gallery .next-button { right: 30%; transform: translateX(50%); }
     .album-announcement { font-size: 1.8em; }
     .countdown-container { gap: 10px; padding: 15px; }
     .countdown-item span { font-size: 1.8em; }
@@ -682,6 +687,10 @@ footer a:hover {
     #seconds-countdown-item { display: none; }
     .privacy-content h3, .contact-info h3 { font-size: 1.8em; }
     .privacy-content p, .contact-info p { font-size: 0.9em; }
+    .events-carousel { padding: 0; }
+    .prev-event-button, .next-event-button { top: 50%; transform: translateY(-50%); }
+    .prev-event-button { left: -15px; }
+    .next-event-button { right: -15px; }
 }
 
 @media (max-width: 480px) {
@@ -696,4 +705,6 @@ footer a:hover {
     .countdown-label { font-size: 0.6em; }
     .event-poster { max-width: 200px; }
     .event-details h4 { font-size: 1.5em; }
+    .prev-event-button { left: 5px; }
+    .next-event-button { right: 5px; }
 }

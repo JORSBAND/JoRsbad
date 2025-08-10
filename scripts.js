@@ -1,4 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Конфігурація Firebase 
+    // ЗАМІНІТЬ ЦІ ЗНАЧЕННЯ НА ВАШІ ВЛАСНІ ДАНІ З КОНСОЛІ FIREBASE
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
+
+    // Ініціалізація Firebase
+    if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase.firestore();
+
+    // Функція для підрахунку переглядів
+    const incrementViewCount = () => {
+        // Використовуємо шлях до сторінки як її унікальний ідентифікатор
+        const pageId = window.location.pathname.replace(/[^a-z0-9]/gi, '_') || 'home';
+        const pageViewsRef = db.collection('page_views').doc(pageId);
+
+        // Використовуємо транзакцію для безпечного оновлення лічильника
+        db.runTransaction((transaction) => {
+            return transaction.get(pageViewsRef).then((doc) => {
+                let newCount = 1;
+                if (doc.exists) {
+                    newCount = doc.data().count + 1;
+                }
+                transaction.set(pageViewsRef, { count: newCount });
+                return newCount;
+            });
+        }).then((newCount) => {
+            // Оновлюємо лічильник на сторінці
+            const counterElement = document.getElementById('view-counter');
+            const counterContainer = document.getElementById('view-counter-container');
+            if(counterElement && counterContainer) {
+                counterElement.textContent = newCount;
+                counterContainer.style.display = 'inline';
+            }
+        }).catch((error) => {
+            console.error("Помилка транзакції Firebase: ", error);
+        });
+    };
+    
+    // Викликаємо функцію підрахунку переглядів при завантаженні сторінки
+    incrementViewCount();
+
+
     // Об'єкт для перекладів
     const translations = {
         'uk': {
@@ -40,7 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
             'footer-text': '&copy; 2025 Гурт JORS. Всі права захищено. | <a href="privacy.html">Політика конфіденційності</a>',
             'band-info-oleksandr': 'Олександр — ритм-гітарист, співзасновник гурту. Його рифи створюють міцний фундамент для нашого звучання.',
             'band-info-david': 'Давид — соло-гітарист та один із засновників. Його віртуозні соло прорізають простір, даруючи незабутні емоції.',
-            'band-info-yaroslav': 'Ярослав — наш потужний барабанщик. Його енергійні ритми тримають увесь гурт і заряджають публіку.'
+            'band-info-yaroslav': 'Ярослав — наш потужний барабанщик. Його енергійні ритми тримають увесь гурт і заряджають публіку.',
+            'events-title': 'Найближчі заходи',
+            'event1-title': 'Стадіон Ювілейний',
+            'event1-date': '12.08.2025 о 17:00',
+            'event1-entry': 'Вхід безкоштовний',
+            'event2-title': 'BunkerPub',
+            'event2-date': '15.08.2025',
+            'event2-entry': 'Потрібна бронь',
+            'views': 'Переглядів'
         },
         'en': {
             'home': 'Home',
@@ -81,7 +139,15 @@ document.addEventListener("DOMContentLoaded", () => {
             'footer-text': '&copy; 2025 JORS Band. All rights reserved. | <a href="privacy.html">Privacy Policy</a>',
             'band-info-oleksandr': 'Oleksandr is the rhythm guitarist and co-founder. His riffs provide a solid foundation for our sound.',
             'band-info-david': 'David is the lead guitarist and one of the founders. His virtuosic solos cut through the air, delivering unforgettable emotions.',
-            'band-info-yaroslav': 'Yaroslav is our powerful drummer. His energetic rhythms hold the whole band together and electrify the audience.'
+            'band-info-yaroslav': 'Yaroslav is our powerful drummer. His energetic rhythms hold the whole band together and electrify the audience.',
+            'events-title': 'Upcoming Events',
+            'event1-title': 'Yuvileinyi Stadium',
+            'event1-date': '12.08.2025 at 17:00',
+            'event1-entry': 'Free admission',
+            'event2-title': 'BunkerPub',
+            'event2-date': '15.08.2025',
+            'event2-entry': 'Reservation required',
+            'views': 'Views'
         }
     };
 
@@ -95,21 +161,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Дані для каруселі учасників
     const bandImages = [
-        { src: "images/bandor.JPG", id: "oleksandr" }, // Олександр - ритм-гітарист
-        { src: "images/bandd.JPG", id: "david" },      // Давид - соло-гітарист
-        { src: "images/bandy.JPG", id: "yaroslav" }    // Ярослав - барабанщик
+        { src: "images/bandor.JPG", id: "oleksandr" },
+        { src: "images/bandd.JPG", id: "david" },
+        { src: "images/bandy.JPG", id: "yaroslav" }
     ];
 
     // Функція для встановлення мови
     const setLanguage = (lang) => {
-        document.documentElement.lang = lang; // Встановлюємо атрибут lang для <html>
-        localStorage.setItem('lang', lang); // Зберігаємо обрану мову
+        document.documentElement.lang = lang;
+        localStorage.setItem('lang', lang);
 
-        // Оновлення тексту в навігації та інших елементах з data-key
         document.querySelectorAll('[data-key]').forEach(element => {
             const key = element.getAttribute('data-key');
             if (translations[lang] && translations[lang][key]) {
-                // Перевіряємо, чи це посилання футера, щоб зберегти теги <a>
                 if (key === 'footer-text') {
                     element.innerHTML = translations[lang][key];
                 } else {
@@ -118,27 +182,22 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Оновлення інформації про учасників гурту в каруселі
         const bandImageElement = document.getElementById("band-image");
         const bandInfoTextElement = document.getElementById("band-info-text");
         if (bandImageElement && bandInfoTextElement) {
-            // Отримуємо назву файлу зображення для пошуку відповідного члена
             const currentImageFileName = bandImageElement.src.split('/').pop();
             const currentBandMember = bandImages.find(member => member.src.includes(currentImageFileName));
             
             if (currentBandMember) {
                 bandInfoTextElement.textContent = translations[lang][`band-info-${currentBandMember.id}`];
             } else {
-                // Якщо поточний учасник був Орестом, повертаємось до першого учасника
                 if (!bandImages.some(member => bandImageElement.src.includes(member.src))) {
                      bandImageElement.src = bandImages[0].src;
                      bandInfoTextElement.textContent = translations[lang][`band-info-${bandImages[0].id}`];
                 }
-                console.warn("Could not find current band member for translation. Image src:", bandImageElement.src);
             }
         }
 
-        // Оновлення написів таймера
         const countdownLabels = document.querySelectorAll('.countdown-label');
         countdownLabels.forEach(label => {
             const key = label.getAttribute('data-key');
@@ -147,54 +206,26 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Оновлення заголовка сторінки "Музика"
         const musicTitleElement = document.querySelector('title[data-key="music"]');
         if (musicTitleElement) {
             musicTitleElement.textContent = translations[lang]['music'];
         }
     };
 
-    // Функція для встановлення теми (світла тема видалена, залишаємо лише "dark" як основну)
-    const setTheme = (theme) => {
-        // Оскільки біла тема видалена, ми просто переконаємося, що завжди застосовується "dark" стиль
-        document.body.classList.remove('light-theme'); // Видаляємо будь-які залишки light-theme
-        document.body.classList.add('dark-theme'); // Завжди застосовуємо dark-theme
-        localStorage.setItem('theme', 'dark'); // Зберігаємо тільки "dark"
-        // Оновлюємо текст на кнопці теми (якщо вона все ще існує, хоча її функціонал змінився)
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        if (themeToggleBtn) {
-            themeToggleBtn.textContent = 'Dark'; // Завжди показуємо "Dark" або приховуємо кнопку
-        }
-    };
-
     // Ініціалізація мови та теми при завантаженні сторінки
-    const savedLang = localStorage.getItem('lang') || 'uk'; // За замовчуванням українська
+    const savedLang = localStorage.getItem('lang') || 'uk';
     setLanguage(savedLang);
-
-    // Завжди застосовуємо "dark" тему при завантаженні
-    setTheme('dark');
-
+    document.body.classList.add('dark-theme');
 
     // Перемикач мови
     const langToggleBtn = document.getElementById('lang-toggle-btn');
     if (langToggleBtn) {
-        langToggleBtn.textContent = savedLang.toUpperCase(); // Відображаємо поточну мову
+        langToggleBtn.textContent = savedLang.toUpperCase();
         langToggleBtn.addEventListener('click', () => {
             const currentLang = localStorage.getItem('lang') || 'uk';
             const newLang = currentLang === 'uk' ? 'en' : 'uk';
             setLanguage(newLang);
-            langToggleBtn.textContent = newLang.toUpperCase(); // Оновлюємо текст кнопки
-        });
-    }
-
-    // Перемикач теми (функціонал змінено, тепер просто показує "Dark")
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    if (themeToggleBtn) {
-        themeToggleBtn.textContent = 'Dark'; // Завжди показуємо "Dark"
-        themeToggleBtn.addEventListener('click', () => {
-            // Оскільки біла тема видалена, ця кнопка більше не перемикає теми
-            // Можливо, її варто приховати або змінити її функціонал
-            console.log("Theme toggle button clicked, but only dark theme is available.");
+            langToggleBtn.textContent = newLang.toUpperCase();
         });
     }
 
@@ -205,14 +236,12 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.classList.toggle('menu-open');
         });
 
-        // Закриття меню при кліку на посилання
         document.querySelectorAll('.navigation-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.body.classList.remove('menu-open');
             });
         });
     }
-
 
     // Логіка Галереї зображень
     let currentImageIndex = 0;
@@ -222,19 +251,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (galleryImage) {
         const updateGalleryImage = () => {
-            // Додаємо клас для анімації зникнення
             galleryImage.classList.add('fade-out');
             setTimeout(() => {
                 galleryImage.src = images[currentImageIndex];
-                // Видаляємо клас зникнення та додаємо клас появи
                 galleryImage.classList.remove('fade-out');
                 galleryImage.classList.add('fade-in');
-            }, 300); // Час має відповідати тривалості анімації в CSS
+            }, 300);
 
-            // Видаляємо клас появи після завершення анімації
             galleryImage.addEventListener('animationend', function handler() {
                 galleryImage.classList.remove('fade-in');
-                galleryImage.removeEventListener('animationend', handler); // Видаляємо обробник після одного виконання
+                galleryImage.removeEventListener('animationend', handler);
             });
         };
 
@@ -250,32 +276,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateGalleryImage();
             });
         }
-        updateGalleryImage(); // Ініціалізація першого зображення галереї
+        updateGalleryImage();
     }
 
     // Карусель учасників - Логіка
     let currentIndex = 0;
-
     const bandImageElement = document.getElementById("band-image");
     const bandInfoTextElement = document.getElementById("band-info-text");
 
     if (bandImageElement && bandInfoTextElement) {
         const updateCarousel = () => {
-            // Додаємо клас для анімації зникнення
             bandImageElement.classList.add('fade-out');
             setTimeout(() => {
                 bandImageElement.src = bandImages[currentIndex].src;
                 const currentLang = localStorage.getItem('lang') || 'uk';
                 bandInfoTextElement.textContent = translations[currentLang][`band-info-${bandImages[currentIndex].id}`];
-                // Видаляємо клас зникнення та додаємо клас появи
                 bandImageElement.classList.remove('fade-out');
                 bandImageElement.classList.add('fade-in');
-            }, 300); // Час має відповідати тривалості анімації в CSS
+            }, 300);
 
-            // Видаляємо клас появи після завершення анімації
             bandImageElement.addEventListener('animationend', function handler() {
                 bandImageElement.classList.remove('fade-in');
-                bandImageElement.removeEventListener('animationend', handler); // Видаляємо обробник після одного виконання
+                bandImageElement.removeEventListener('animationend', handler);
             });
         };
 
@@ -294,19 +316,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateCarousel();
             });
         }
-
-        // Перевіряємо, чи поточне зображення не є видаленим (bando.jpg)
-        // Якщо так, переходимо до першого елемента
         if (bandImageElement.src.includes("bando.jpg")) {
             currentIndex = 0;
         }
-        updateCarousel(); // Initial call to set the first member's info
+        updateCarousel();
     }
 
-    // Логіка таймера зворотного відліку для сторінки "Музика"
-    // Дата релізу альбому: 15 серпня 2025 року, 00:00:00
+    // Логіка таймера зворотного відліку
     const countdownDate = new Date("Aug 15, 2025 00:00:00").getTime();
-
     const updateCountdown = () => {
         const now = new Date().getTime();
         const distance = countdownDate - now;
@@ -326,14 +343,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (minutesSpan) minutesSpan.textContent = String(minutes).padStart(2, '0');
         if (secondsSpan) secondsSpan.textContent = String(seconds).padStart(2, '0');
 
-        // Якщо відлік завершено
         if (distance < 0) {
-            clearInterval(countdownInterval); // Зупиняємо таймер
+            clearInterval(countdownInterval);
             const albumAnnouncement = document.querySelector('.album-announcement');
             if (albumAnnouncement) {
-                albumAnnouncement.textContent = "Альбом HOPEKILLER вже вийшов!"; // Оновлюємо текст
+                albumAnnouncement.textContent = "Альбом HOPEKILLER вже вийшов!";
             }
-            // Встановлюємо всі значення таймера на "00"
             if (daysSpan) daysSpan.textContent = "00";
             if (hoursSpan) hoursSpan.textContent = "00";
             if (minutesSpan) minutesSpan.textContent = "00";
@@ -341,31 +356,38 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    let countdownInterval; // Оголошуємо змінну інтервалу глобально або в області видимості
-    // Запускаємо таймер тільки на сторінці music.html
+    let countdownInterval;
     if (window.location.pathname.includes('music.html')) {
-        updateCountdown(); // Початкове оновлення, щоб уникнути затримки
-        countdownInterval = setInterval(updateCountdown, 1000); // Присвоюємо інтервал змінній
+        updateCountdown();
+        countdownInterval = setInterval(updateCountdown, 1000);
     }
 
-    // Lazy loading зображень (для головної та інших сторінок з атрибутом data-src)
-    const lazyImages = document.querySelectorAll("img[data-src]");
+    // Логіка каруселі подій
+    const eventSlides = document.querySelectorAll(".event-slide");
+    if (eventSlides.length > 0) {
+        let currentEventIndex = 0;
+        const prevEventButton = document.querySelector(".prev-event-button");
+        const nextEventButton = document.querySelector(".next-event-button");
 
-    const loadImage = (image) => {
-        image.src = image.getAttribute("data-src");
-        image.onload = () => image.removeAttribute("data-src");
-    };
+        const showEventSlide = (index) => {
+            eventSlides.forEach((slide, i) => {
+                slide.classList.remove("active-slide");
+                if (i === index) {
+                    slide.classList.add("active-slide");
+                }
+            });
+        };
 
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                loadImage(entry.target);
-                observer.unobserve(entry.target);
-            }
+        prevEventButton.addEventListener("click", () => {
+            currentEventIndex = (currentEventIndex - 1 + eventSlides.length) % eventSlides.length;
+            showEventSlide(currentEventIndex);
         });
-    }, { rootMargin: "0px 0px 50px 0px" });
 
-    lazyImages.forEach(image => imageObserver.observe(image));
+        nextEventButton.addEventListener("click", () => {
+            currentEventIndex = (currentEventIndex + 1) % eventSlides.length;
+            showEventSlide(currentEventIndex);
+        });
+
+        showEventSlide(currentEventIndex); // Показати перший слайд
+    }
 });
-
-

@@ -12,7 +12,7 @@
 body {
     font-family: 'Lato', sans-serif;
     background-color: #111111;
-    color: #FFA500; /* Змінено на оранжевий */
+    color: #FFA500;
     transition: background-color 0.5s ease, color 0.5s ease;
     overflow-x: hidden;
 }
@@ -24,7 +24,7 @@ header {
     align-items: center;
     padding: 20px 30px;
     background-color: #000000;
-    border-bottom: 2px solid #FFA500; /* Змінено на оранжевий */
+    border-bottom: 2px solid #FFA500;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
     flex-wrap: nowrap;
     position: relative;
@@ -33,27 +33,26 @@ header {
 
 header .logo h1 {
     font-family: 'Exo 2', sans-serif;
-    color: #FFA500; /* Змінено на оранжевий */
+    color: #FFA500;
     font-size: 2.8em;
     font-weight: 800;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     letter-spacing: 2px;
     position: relative;
-    cursor: help;
+    cursor: default; /* Змінено курсор за замовчуванням */
 }
 
 body.home .logo h1 {
     cursor: pointer; /* Спеціальний курсор для лого на головній */
 }
 
-
 header .logo h1::after {
-    content: "на інструменти: 4441 1110 5475 1544";
+    content: "Зіграти в гру!";
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #FFA500; /* Змінено на оранжевий */
+    background-color: #FFA500;
     color: #000000;
     padding: 5px 10px;
     border-radius: 5px;
@@ -68,14 +67,10 @@ header .logo h1::after {
     text-shadow: none;
     border: none;
     box-shadow: none;
+    pointer-events: none; /* Щоб підказка не заважала кліку */
 }
 
 body.home .logo h1:hover::after {
-    content: "Зіграти в гру!";
-}
-
-
-header .logo h1:hover::after {
     opacity: 1;
     visibility: visible;
     top: calc(100% + 10px);
@@ -85,15 +80,14 @@ header .logo h1:hover::after {
     display: flex;
     align-items: center;
     gap: 30px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-end;
-    flex-grow: 1;
 }
 
 nav ul {
     display: flex;
     gap: 25px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
 }
 
@@ -103,7 +97,7 @@ nav ul li {
 
 nav ul li a {
     font-family: 'Exo 2', sans-serif;
-    color: #FFA500; /* Змінено на оранжевий */
+    color: #FFA500;
     text-decoration: none;
     font-size: 1.3em;
     text-transform: uppercase;
@@ -115,30 +109,9 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: #FFC500; /* Яскравіший оранжевий */
-    text-shadow: 0 0 10px #FFC500; /* Ефект світіння */
+    color: #FFC500;
+    text-shadow: 0 0 10px #FFC500;
     transform: translateY(-3px);
-}
-
-.lang-toggle-btn {
-    font-family: 'Exo 2', sans-serif;
-    background-color: #FFA500; /* Змінено на оранжевий */
-    color: #000000;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1.1em;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-    box-shadow: 0 0 8px rgba(255, 165, 0, 0.5); /* Змінено на оранжевий */
-    z-index: 100;
-}
-
-.lang-toggle-btn:hover {
-    background-color: #E69500; /* Темніший оранжевий */
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px rgba(255, 165, 0, 0.8); /* Сильніше світіння */
 }
 
 /* Секції основного контенту */
@@ -208,6 +181,7 @@ body.game-page {
     padding: 40px;
     border-radius: 15px;
     border: 2px solid #FFA500;
+    z-index: 100;
 }
 
 #game-over-screen h2 {
@@ -243,6 +217,94 @@ body.game-page {
     transform: translateX(-50%);
     padding: 10px 20px;
     font-size: 1em;
+    z-index: 100;
+}
+
+/* Карусель учасників */
+.band-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Вирівнювання по центру */
+    flex-direction: column; /* Вертикальний напрямок */
+    gap: 20px; /* Відстань між елементами */
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.carousel {
+    position: relative;
+    width: 100%; /* Займає всю ширину контейнера */
+    max-width: 650px;
+    margin-bottom: 50px; /* Відстань для кнопок */
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
+    border: 2px solid #FFA500;
+    aspect-ratio: 1 / 1;
+}
+
+.band-info {
+    width: 100%;
+    max-width: 650px;
+    padding: 30px;
+    background-color: #333333;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #555555;
+}
+
+.band-info p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25em;
+    color: #FFC500;
+    margin: 0;
+    text-align: left;
+    line-height: 1.8;
+}
+
+.control-button {
+    position: absolute;
+    background: transparent;
+    color: #FFA500;
+    border: 2px solid #FFA500;
+    font-size: 1.5em;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    width: 45px;
+    height: 45px;
+}
+
+.control-button:hover {
+    background-color: rgba(255, 165, 0, 0.2);
+    color: #000000;
+    border-color: #FFC500;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+    opacity: 1;
+}
+
+/* Позиціонування кнопок каруселі */
+.carousel .prev-button, .gallery .prev-button, .prev-event-button {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel .next-button, .gallery .next-button, .next-event-button {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 
@@ -293,4 +355,21 @@ footer a:hover {
     #game-ui { font-size: 1.2em; }
     #game-over-screen h2 { font-size: 2em; }
     #restart-btn { padding: 10px 20px; font-size: 1.2em; }
+    
+    .carousel {
+        margin-bottom: 0; /* Прибираємо нижній відступ */
+    }
+
+    .carousel .control-button {
+        top: auto;
+        bottom: -55px; /* Розміщуємо кнопки під зображенням */
+    }
+    .carousel .prev-button {
+        left: 50%;
+        transform: translateX(-120%);
+    }
+    .carousel .next-button {
+        right: 50%;
+        transform: translateX(120%);
+    }
 }
